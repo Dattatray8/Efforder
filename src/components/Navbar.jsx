@@ -27,6 +27,13 @@ function navbar() {
     { name: "Wearables", icon: <Watch /> },
   ];
 
+  const navUiClasses = [
+    {
+      div: "flex gap-2 items-center hover:text-blue-600 cursor-pointer transition hover:scale-105",
+      p: "font-semibold text-lg",
+    },
+  ];
+
   useEffect(() => {
     function handleClickEvent(e) {
       if (searchRef.current && !searchRef.current.contains(e.target)) {
@@ -44,9 +51,9 @@ function navbar() {
   }, [searchOpen]);
 
   return (
-    <div className="w-screen shadow-md h-20 flex justify-center items-center z-20 relative">
+    <div className="w-screen shadow-md h-20 flex justify-center items-center z-20 bg-[#e6f0fe] fixed">
       <div className="w-[80%] flex items-center justify-between">
-        <img src={logo} alt="Efforder Logo" className="w-35" />
+        <img src={logo} alt="Efforder Logo" className="w-35 cursor-pointer" />
         <div className="flex gap-16 items-center relative">
           <div
             onClick={() => {
@@ -92,7 +99,7 @@ function navbar() {
                     d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
                   />
                 </svg>
-                <p className="font-semibold text-lg">Search</p>
+                <p className={navUiClasses[0].p}>Search</p>
               </div>
             )}
           </div>
@@ -131,13 +138,13 @@ function navbar() {
               )}
             </AnimatePresence>
           </div>
-          <div className="flex gap-2 items-center hover:text-blue-600 cursor-pointer transition hover:scale-105">
+          <div className={navUiClasses[0].div}>
             <ShoppingCart />
-            <p className="font-semibold text-lg">Cart</p>
+            <p className={navUiClasses[0].p}>Cart</p>
           </div>
-          <div className="flex gap-2 items-center hover:text-blue-600 cursor-pointer transition hover:scale-105">
+          <div className={navUiClasses[0].div}>
             <User />
-            <p className="font-semibold text-lg">Sign In</p>
+            <p className={navUiClasses[0].p}>Sign In</p>
           </div>
           <div
             className="flex items-center cursor-pointer hover:scale-105"

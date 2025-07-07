@@ -4,7 +4,7 @@ import Home from "./pages/Home"
 function App() {
 
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <Navbar />
       <Home />
     </div>

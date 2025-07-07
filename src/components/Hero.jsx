@@ -1,14 +1,14 @@
 import React from "react";
 import hero from "../assets/hero.webp";
 import AOS from "aos";
-import "aos/dist/aos.css"; // You can also use <link> for styles
-// ..
+import "aos/dist/aos.css"; 
+
 AOS.init();
 
 function Hero() {
   return (
     <div
-      className="overflow-hidden px-[10%] py-16 md:h-[600px] bg-cover bg-center"
+      className="overflow-hidden px-[10%] py-16 md:h-[600px] mt-20 bg-cover bg-center max-w-screen"
       style={{ backgroundImage: `url(${hero})` }}
     >
       <div className="flex flex-col md:flex-row items-center max-w-[1300px] mx-auto h-full">
