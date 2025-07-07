@@ -1,11 +1,31 @@
 import React, { useEffect, useRef, useState } from "react";
 import logo from "../assets/logo.webp";
-import { Moon, ShoppingCart, Sun, User } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  Moon,
+  ShoppingCart,
+  Sun,
+  User,
+  Laptop,
+  Smartphone,
+  Headphones,
+  Camera,
+  Watch,
+} from "lucide-react";
 
 function navbar() {
   const [darkMode, setDarkMode] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [shopOpen, setShopOpen] = useState(false);
   const searchRef = useRef(null);
+
+  const categories = [
+    { name: "Laptops", icon: <Laptop /> },
+    { name: "Smartphones", icon: <Smartphone /> },
+    { name: "Audio", icon: <Headphones /> },
+    { name: "Cameras", icon: <Camera /> },
+    { name: "Wearables", icon: <Watch /> },
+  ];
 
   useEffect(() => {
     function handleClickEvent(e) {
@@ -24,10 +44,10 @@ function navbar() {
   }, [searchOpen]);
 
   return (
-    <div className="w-screen overflow-hidden shadow-md h-20 flex justify-center items-center">
+    <div className="w-screen shadow-md h-20 flex justify-center items-center z-20 relative">
       <div className="w-[80%] flex items-center justify-between">
         <img src={logo} alt="Efforder Logo" className="w-35" />
-        <div className="flex gap-16 items-center">
+        <div className="flex gap-16 items-center relative">
           <div
             onClick={() => {
               setSearchOpen(true);
@@ -76,9 +96,41 @@ function navbar() {
               </div>
             )}
           </div>
-          <p className="font-semibold text-lg hover:text-blue-600 cursor-pointer transition hover:scale-105">
-            Shop
-          </p>
+          <div className="relative">
+            <button
+              className="font-semibold text-lg hover:text-blue-600 cursor-pointer transition hover:scale-105"
+              onClick={() => {
+                setShopOpen(!shopOpen);
+              }}
+            >
+              Shop
+            </button>
+            <AnimatePresence>
+              {shopOpen && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95, y: -10 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95, y: -10 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-lg z-30"
+                >
+                  <ul className="p-2">
+                    {categories.map((item) => (
+                      <li
+                        className="flex items-center gap-2 p-2 hover:bg-gray-100 cursor-pointer"
+                        onClick={() => {
+                          setShopOpen(false);
+                        }}
+                      >
+                        {item.icon}
+                        {item.name}
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
           <div className="flex gap-2 items-center hover:text-blue-600 cursor-pointer transition hover:scale-105">
             <ShoppingCart />
             <p className="font-semibold text-lg">Cart</p>
