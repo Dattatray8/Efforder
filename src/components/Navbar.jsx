@@ -29,8 +29,8 @@ function navbar() {
 
   const navUiClasses = [
     {
-      div: "flex gap-2 items-center hover:text-blue-600 cursor-pointer transition hover:scale-105",
-      p: "font-semibold text-lg",
+      div: "flex gap-2 items-center group hover:text-blue-600 cursor-pointer transition hover:scale-105",
+      p: "font-semibold text-lg text-[#394762] group-hover:text-blue-600",
     },
   ];
 
@@ -61,7 +61,7 @@ function navbar() {
             }}
           >
             {searchOpen ? (
-              <div className="flex items-center hover:border-blue-600 border py-2 px-4 rounded-full transition-[0.95s]">
+              <div className="flex items-center hover:border-blue-600 border border-[#394762] py-2 px-4 rounded-full transition-[0.95s]">
                 <input
                   type="text"
                   placeholder="Search..."
@@ -74,7 +74,7 @@ function navbar() {
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="size-6 cursor-pointer"
+                  className="size-6 cursor-pointer hover:text-blue-600 text-[#394762]"
                 >
                   <path
                     strokeLinecap="round"
@@ -84,14 +84,14 @@ function navbar() {
                 </svg>
               </div>
             ) : (
-              <div className="flex gap-2 items-center cursor-pointer hover:text-blue-600 transition-[0.95s] hover:scale-105">
+              <div className="flex gap-2 items-center cursor-pointer hover:text-blue-600 transition-[0.95s] hover:scale-105 group">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="size-6"
+                  className="size-6 text-[#394762] group-hover:text-blue-600"
                 >
                   <path
                     strokeLinecap="round"
@@ -105,7 +105,7 @@ function navbar() {
           </div>
           <div className="relative">
             <button
-              className="font-semibold text-lg hover:text-blue-600 cursor-pointer transition hover:scale-105"
+              className="font-semibold text-lg hover:text-blue-600 text-[#394762] cursor-pointer transition hover:scale-105"
               onClick={() => {
                 setShopOpen(!shopOpen);
               }}
@@ -139,11 +139,11 @@ function navbar() {
             </AnimatePresence>
           </div>
           <div className={navUiClasses[0].div}>
-            <ShoppingCart />
+            <ShoppingCart className="text-[#394762] group-hover:text-blue-600"/>
             <p className={navUiClasses[0].p}>Cart</p>
           </div>
           <div className={navUiClasses[0].div}>
-            <User />
+            <User className="text-[#394762] group-hover:text-blue-600"/>
             <p className={navUiClasses[0].p}>Sign In</p>
           </div>
           <div
