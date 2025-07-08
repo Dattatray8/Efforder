@@ -21,7 +21,14 @@ function Slider() {
     <div className="bg-[#e6f0fe] max-w-screen p-8">
       <div className="bg-white flex flex-col rounded-lg">
         <div className="px-8 py-4">
-          <p className="font-semibold text-[2em]">Best of Electronics</p>
+          <p
+            className="font-semibold text-[2em]"
+            data-aos="fade-up"
+            data-aos-duration="1500"
+            data-aos-once="true"
+          >
+            Best of Electronics
+          </p>
         </div>
         <div className="flex px-8 pb-16 pt-8 gap-20 justify-center items-center flex-wrap">
           {sliderTabs.map((item, i) => (

@@ -63,7 +63,7 @@ export default [
     oldPrice: 4449,
     discount: 37,
     image: jbl,
-    category: "Accessories",
+    category: "Audio",
     productId: "acjbl510bt",
   },
   {
@@ -143,7 +143,7 @@ export default [
     oldPrice: 6999,
     discount: 64,
     image: boultx,
-    category: "Accessories",
+    category: "Audio",
     productId: "acboultx",
   },
   {
@@ -193,7 +193,7 @@ export default [
     oldPrice: 5999,
     discount: 67,
     image: boultq,
-    category: "Accessories",
+    category: "Audio",
     productId: "acboultq",
   },
   {
@@ -341,7 +341,7 @@ export default [
     oldPrice: 3990,
     discount: 65,
     image: boat,
-    category: "Accessories",
+    category: "Audio",
     productId: "acboat450",
   },
   {

@@ -1,14 +1,12 @@
-import Navbar from "./components/navbar"
-import Home from "./pages/Home"
+import Home from "./pages/Home";
+import AppRoutes from "./routes/AppRoutes";
 
 function App() {
-
   return (
     <div className="overflow-x-hidden">
-      <Navbar />
-      <Home />
+      <AppRoutes />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

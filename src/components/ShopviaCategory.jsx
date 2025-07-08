@@ -10,10 +10,13 @@ import {
 } from "lucide-react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { useNavigate } from "react-router-dom";
 
 AOS.init();
 
 function ShopviaCategory() {
+  let navigation = useNavigate();
+
   const category = [
     {
       name: "Laptops",
@@ -46,7 +49,12 @@ function ShopviaCategory() {
 
   return (
     <div className="bg-[#e6f0fe] max-w-screen p-8 flex flex-col justify-center items-center gap-8 overflow-hidden">
-      <div className="self-start flex w-[80%] pl-[10%] font-semibold text-3xl">
+      <div
+        className="self-start flex w-[80%] pl-[10%] font-semibold text-3xl"
+        data-aos="fade-up"
+        data-aos-duration="1500"
+        data-aos-once="true"
+      >
         Shop By Category
       </div>
       <div className="w-[80%] flex flex-wrap gap-12 justify-center items-center">
@@ -57,6 +65,9 @@ function ShopviaCategory() {
             data-aos="fade-up"
             data-aos-duration="1500"
             data-aos-once="true"
+            onClick={()=>{
+              navigation(`/products/category/${item.name}`)
+            }}
           >
             <div className="scale-125">{item.icon}</div>
             <p className="font-semibold">{item.name}</p>
