@@ -1,11 +1,18 @@
 import React from "react";
 import hero from "../assets/hero.webp";
 import AOS from "aos";
-import "aos/dist/aos.css"; 
+import "aos/dist/aos.css";
 
 AOS.init();
 
 function Hero() {
+  const scrollToSection = (id) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <div
       className="overflow-hidden px-[10%] py-16 md:h-[600px] mt-20 bg-cover bg-center max-w-screen"
@@ -37,11 +44,12 @@ function Hero() {
           {/* Buttons */}
           <div className="flex gap-4 flex-col sm:flex-row">
             <button
-              className="relative flex items-center justify-center gap-3 px-7 py-3 hover:border-[#2A7CF7] rounded-md bg-[#312af7] text-white overflow-hidden group hover:bg-[#2563eb] transition"
+              className="relative flex items-center justify-center gap-3 px-7 py-3 hover:border-[#2A7CF7] rounded-md bg-[#312af7] text-white overflow-hidden group cursor-pointer hover:bg-[#2563eb] transition"
               data-aos="fade-in"
               data-aos-duration="1000"
               data-aos-once="true"
               data-aos-delay="2000"
+              onClick={() => scrollToSection("featured-products")}
             >
               <span className="z-10 font-semibold transition-transform duration-300 group-hover:scale-110 group-hover:text-[#2A7CF7]">
                 Shop Now
@@ -50,11 +58,12 @@ function Hero() {
             </button>
 
             <button
-              className="relative flex items-center justify-center gap-3 px-7 py-3 border hover:border-[#2A7CF7] rounded-md text-white overflow-hidden group hover:text-white transition"
+              className="relative flex items-center cursor-pointer justify-center gap-3 px-7 py-3 border hover:border-[#2A7CF7] rounded-md text-white overflow-hidden group hover:text-white transition"
               data-aos="fade-in"
               data-aos-duration="1000"
               data-aos-once="true"
               data-aos-delay="2500"
+              onClick={() => scrollToSection("category-section")}
             >
               <span className="z-10 font-semibold transition-transform duration-300 group-hover:scale-110">
                 Explore Categories

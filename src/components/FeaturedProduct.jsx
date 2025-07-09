@@ -9,7 +9,10 @@ function FeaturedProduct() {
     setFeaturedProducts(GetRandomProducts(Products, 4));
   }, []);
   return (
-    <div className="bg-[#e6f0fe] max-w-screen flex justify-center items-center p-4 sm:p-8 min-w-screen">
+    <div
+      className="bg-[#e6f0fe] max-w-screen flex justify-center items-center p-4 sm:p-8 min-w-screen"
+      id="featured-products"
+    >
       <div className="flex flex-col gap-4 w-full justify-center items-center">
         <div
           className="font-semibold text-[2em] ml-[2.5%] self-start"

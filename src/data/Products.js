@@ -57,6 +57,16 @@ export default [
     image: iphone15,
     category: "Smartphones",
     productId: "spip15",
+    reviewsCount: 185,
+    stock: 23,
+    description:
+      "Experience unmatched performance and stunning visuals with the iPhone 15. Powered by a fast processor and featuring an advanced camera system, it's everything you love — and more.",
+    features: [
+      "High-resolution OLED/AMOLED display",
+      "Advanced multi-lens camera system",
+      "5G connectivity and fast charging",
+      "Biometric security and AI enhancements",
+    ],
   },
   {
     id: 2,
@@ -67,6 +77,16 @@ export default [
     image: lenovothink,
     category: "Laptops",
     productId: "lptlnvthink",
+    reviewsCount: 142,
+    stock: 15,
+    description:
+      "Built for business professionals, the Lenovo ThinkPad delivers reliable performance, exceptional durability, and enterprise-grade security features for demanding work environments.",
+    features: [
+      "Intel Core processor with integrated graphics",
+      "Full HD anti-glare display",
+      "Spill-resistant keyboard and TrackPoint",
+      "Military-grade durability testing",
+    ],
   },
   {
     id: 3,
@@ -77,6 +97,16 @@ export default [
     image: jbl,
     category: "Audio",
     productId: "acjbl510bt",
+    reviewsCount: 298,
+    stock: 45,
+    description:
+      "Enjoy wireless freedom with JBL Tune 510BT headphones. Experience rich, dynamic sound with deep bass and crystal-clear audio for music, calls, and entertainment.",
+    features: [
+      "Wireless Bluetooth 5.0 connectivity",
+      "JBL Pure Bass sound signature",
+      "Up to 40 hours battery life",
+      "Lightweight and foldable design",
+    ],
   },
   {
     id: 4,
@@ -87,6 +117,16 @@ export default [
     image: dell3530,
     category: "Laptops",
     productId: "lptdell3530",
+    reviewsCount: 167,
+    stock: 12,
+    description:
+      "The Dell Inspiron 3530 combines performance and style for everyday computing. Perfect for work, study, and entertainment with reliable performance and modern features.",
+    features: [
+      "Intel Core processor with integrated graphics",
+      "Full HD anti-glare display",
+      "Fast SSD storage and ample RAM",
+      "Comprehensive connectivity options",
+    ],
   },
   {
     id: 5,
@@ -97,6 +137,16 @@ export default [
     image: redmi13,
     category: "Smartphones",
     productId: "sprm13",
+    reviewsCount: 234,
+    stock: 38,
+    description:
+      "Experience lightning-fast 5G connectivity with the Redmi 13 5G. Featuring a powerful processor, impressive camera capabilities, and long-lasting battery life.",
+    features: [
+      "5G connectivity for ultra-fast speeds",
+      "High-refresh rate display",
+      "AI-enhanced camera system",
+      "Large battery with fast charging",
+    ],
   },
   {
     id: 6,
@@ -107,6 +157,16 @@ export default [
     image: dell5630,
     category: "Laptops",
     productId: "lptdell5630",
+    reviewsCount: 189,
+    stock: 8,
+    description:
+      "Premium performance meets elegant design in the Dell Inspiron 5630. Ideal for professionals and creators who demand power, portability, and style.",
+    features: [
+      "Intel Core processor with dedicated graphics",
+      "Full HD IPS display with narrow bezels",
+      "Fast SSD storage and expandable memory",
+      "Backlit keyboard and fingerprint reader",
+    ],
   },
   {
     id: 7,
@@ -117,6 +177,16 @@ export default [
     image: sgs23ul,
     category: "Smartphones",
     productId: "spsg23ul",
+    reviewsCount: 421,
+    stock: 16,
+    description:
+      "The ultimate flagship smartphone with S Pen integration, professional-grade cameras, and cutting-edge performance. Perfect for power users and creative professionals.",
+    features: [
+      "S Pen with advanced note-taking features",
+      "108MP quad-camera system with 100x zoom",
+      "Dynamic AMOLED 2X display with 120Hz",
+      "All-day battery with wireless charging",
+    ],
   },
   {
     id: 8,
@@ -127,6 +197,16 @@ export default [
     image: lenovov14,
     category: "Laptops",
     productId: "lptlnvv14",
+    reviewsCount: 156,
+    stock: 22,
+    description:
+      "Affordable and reliable, the Lenovo V14 offers essential computing power for students and business users. Compact design with solid performance for everyday tasks.",
+    features: [
+      "AMD Ryzen processor for efficient performance",
+      "14-inch HD display with anti-glare coating",
+      "Lightweight design under 1.6kg",
+      "Comprehensive security features",
+    ],
   },
   {
     id: 9,
@@ -137,6 +217,16 @@ export default [
     image: redminote13,
     category: "Smartphones",
     productId: "sprmnote13p",
+    reviewsCount: 312,
+    stock: 27,
+    description:
+      "Capture stunning photos and enjoy smooth performance with the Redmi Note 13 Pro. Features a premium camera system and fast charging for all-day productivity.",
+    features: [
+      "200MP main camera with OIS",
+      "120Hz AMOLED curved display",
+      "67W fast charging technology",
+      "IP54 water and dust resistance",
+    ],
   },
   {
     id: 10,
@@ -147,6 +237,16 @@ export default [
     image: acernitro,
     category: "Laptops",
     productId: "lptacrnitrov",
+    reviewsCount: 198,
+    stock: 14,
+    description:
+      "Unleash your gaming potential with the Acer Nitro V. Featuring powerful graphics, advanced cooling, and gaming-focused features for competitive performance.",
+    features: [
+      "NVIDIA GeForce RTX graphics",
+      "High-refresh rate gaming display",
+      "Advanced cooling system",
+      "Gaming-optimized keyboard with RGB lighting",
+    ],
   },
   {
     id: 11,
@@ -157,6 +257,16 @@ export default [
     image: boultx,
     category: "Audio",
     productId: "acboultx",
+    reviewsCount: 267,
+    stock: 52,
+    description:
+      "Experience premium audio quality with Boult X Mustang headphones. Designed for audiophiles who demand exceptional sound clarity and comfort.",
+    features: [
+      "High-definition audio drivers",
+      "Noise isolation technology",
+      "Comfortable over-ear design",
+      "Long-lasting battery life",
+    ],
   },
   {
     id: 12,
@@ -167,6 +277,16 @@ export default [
     image: hp15,
     category: "Laptops",
     productId: "lpthp15",
+    reviewsCount: 203,
+    stock: 19,
+    description:
+      "Versatile and dependable, the HP 15 laptop delivers solid performance for work, study, and entertainment. Features modern design and reliable hardware.",
+    features: [
+      "Intel Core processor with integrated graphics",
+      "15.6-inch Full HD display",
+      "Fast boot times with SSD storage",
+      "HP Fast Charge technology",
+    ],
   },
   {
     id: 13,
@@ -177,6 +297,16 @@ export default [
     image: iphone16,
     category: "Smartphones",
     productId: "spip16",
+    reviewsCount: 156,
+    stock: 31,
+    description:
+      "The latest iPhone 16 brings revolutionary features and enhanced performance. Experience next-generation mobile technology with advanced AI capabilities.",
+    features: [
+      "A18 Bionic chip with advanced AI",
+      "Enhanced camera system with new features",
+      "Improved battery life and efficiency",
+      "New Action Button and customizable controls",
+    ],
   },
   {
     id: 14,
@@ -187,6 +317,16 @@ export default [
     image: dell3440,
     category: "Laptops",
     productId: "lptdell3440",
+    reviewsCount: 134,
+    stock: 25,
+    description:
+      "Business-ready Dell Latitude 3440 offers enterprise-grade security and reliability. Perfect for professionals who need dependable performance on the go.",
+    features: [
+      "Intel Core processor for business applications",
+      "14-inch anti-glare display",
+      "Enhanced security features",
+      "Durable build quality with spill-resistant keyboard",
+    ],
   },
   {
     id: 15,
@@ -197,6 +337,16 @@ export default [
     image: aceralg,
     category: "Laptops",
     productId: "lptacralg",
+    reviewsCount: 178,
+    stock: 11,
+    description:
+      "Performance-focused Acer ALG laptop designed for demanding applications. Combines power and efficiency for professional and creative workflows.",
+    features: [
+      "High-performance processor and graphics",
+      "Full HD display with color accuracy",
+      "Fast NVMe SSD storage",
+      "Advanced thermal management",
+    ],
   },
   {
     id: 16,
@@ -207,6 +357,16 @@ export default [
     image: boultq,
     category: "Audio",
     productId: "acboultq",
+    reviewsCount: 389,
+    stock: 67,
+    description:
+      "Affordable premium sound with Boult Q headphones. Perfect for music enthusiasts seeking quality audio without breaking the bank.",
+    features: [
+      "Rich bass and clear highs",
+      "Comfortable padded ear cups",
+      "Adjustable headband for perfect fit",
+      "Universal 3.5mm compatibility",
+    ],
   },
   {
     id: 17,
@@ -217,6 +377,16 @@ export default [
     image: acerneo,
     category: "Laptops",
     productId: "lptacrneo16",
+    reviewsCount: 89,
+    stock: 6,
+    description:
+      "Ultimate gaming powerhouse with the Acer Predator Helios Neo 16. Designed for serious gamers and content creators who demand maximum performance.",
+    features: [
+      "Latest NVIDIA RTX graphics card",
+      "16-inch high-refresh gaming display",
+      "Advanced cooling with multiple fans",
+      "Per-key RGB mechanical keyboard",
+    ],
   },
   {
     id: 18,
@@ -227,6 +397,16 @@ export default [
     image: sga23,
     category: "Smartphones",
     productId: "spsga23",
+    reviewsCount: 245,
+    stock: 33,
+    description:
+      "Reliable and feature-rich Samsung Galaxy A23 offers excellent value for money. Perfect for users seeking Samsung quality at an affordable price.",
+    features: [
+      "Quad-camera system with macro lens",
+      "Large 6.6-inch Infinity-V display",
+      "Long-lasting 5000mAh battery",
+      "Samsung Knox security platform",
+    ],
   },
   {
     id: 19,
@@ -237,14 +417,36 @@ export default [
     image: acerswift,
     category: "Laptops",
     productId: "lptacrsw9014",
+    reviewsCount: 167,
+    stock: 18,
+    description:
+      "Sleek and portable Acer Swift 9014 combines style with substance. Ideal for professionals who need a lightweight laptop without compromising performance.",
+    features: [
+      "Ultra-thin and lightweight design",
+      "Full HD IPS display with narrow bezels",
+      "Fast SSD storage for quick boot times",
+      "All-day battery life",
+    ],
   },
   {
     id: 20,
     name: "Samsung S25 5G",
     price: 80999,
+    oldPrice: null,
+    discount: null,
     image: sgs25,
     category: "Smartphones",
     productId: "spsg25",
+    reviewsCount: 78,
+    stock: 21,
+    description:
+      "The latest Samsung S25 5G brings cutting-edge technology and innovation. Experience the future of mobile computing with advanced AI features.",
+    features: [
+      "Next-generation 5G connectivity",
+      "AI-enhanced camera system",
+      "Dynamic AMOLED 2X display",
+      "Advanced biometric security",
+    ],
   },
   {
     id: 21,
@@ -255,6 +457,16 @@ export default [
     image: lenovoslim3,
     category: "Laptops",
     productId: "lptlnvslm3",
+    reviewsCount: 194,
+    stock: 13,
+    description:
+      "Stylish and efficient Lenovo IdeaPad Slim 3 perfect for students and professionals. Combines sleek design with reliable performance for everyday computing.",
+    features: [
+      "AMD Ryzen processor for smooth performance",
+      "15.6-inch Full HD anti-glare display",
+      "Rapid Charge technology",
+      "Dolby Audio for enhanced sound",
+    ],
   },
   {
     id: 22,
@@ -265,6 +477,16 @@ export default [
     image: iphone13,
     category: "Smartphones",
     productId: "spip13",
+    reviewsCount: 567,
+    stock: 29,
+    description:
+      "Proven excellence with iPhone 13. Features advanced camera system, powerful A15 Bionic chip, and all-day battery life in a durable design.",
+    features: [
+      "A15 Bionic chip with 6-core CPU",
+      "Advanced dual-camera system",
+      "Super Retina XDR display",
+      "Ceramic Shield front cover",
+    ],
   },
   {
     id: 23,
@@ -275,6 +497,16 @@ export default [
     image: hp14,
     category: "Laptops",
     productId: "lpthp14",
+    reviewsCount: 156,
+    stock: 17,
+    description:
+      "Premium HP Pavilion 14 offers exceptional performance in a compact form factor. Perfect for professionals who need power and portability.",
+    features: [
+      "Intel Core processor with Intel Iris Xe",
+      "14-inch Full HD micro-edge display",
+      "B&O audio with dual speakers",
+      "HP Fast Charge and long battery life",
+    ],
   },
   {
     id: 24,
@@ -285,9 +517,19 @@ export default [
     image: iphone16max,
     category: "Smartphones",
     productId: "spip16max",
+    reviewsCount: 123,
+    stock: 8,
+    description:
+      "The ultimate iPhone experience with Pro Max features. Advanced Pro camera system, titanium design, and A18 Pro chip for professionals and enthusiasts.",
+    features: [
+      "A18 Pro chip with advanced Neural Engine",
+      "Pro camera system with titanium design",
+      "Largest Super Retina XDR display",
+      "Professional video recording capabilities",
+    ],
   },
   {
-    id: 24,
+    id: 25,
     name: "Lenovo LOQ",
     price: 65490,
     oldPrice: 82690,
@@ -295,6 +537,16 @@ export default [
     image: lenovoloq,
     category: "Laptops",
     productId: "lptlnvloq",
+    reviewsCount: 142,
+    stock: 16,
+    description:
+      "Gaming-focused Lenovo LOQ delivers solid performance for gaming and content creation. Balanced specs and competitive pricing for enthusiast gamers.",
+    features: [
+      "NVIDIA GeForce RTX graphics",
+      "15.6-inch Full HD gaming display",
+      "Legion Coldfront cooling system",
+      "RGB backlit gaming keyboard",
+    ],
   },
   {
     id: 26,
@@ -305,6 +557,16 @@ export default [
     image: dellg15,
     category: "Laptops",
     productId: "lptdellg15",
+    reviewsCount: 178,
+    stock: 12,
+    description:
+      "Dell G15 gaming laptop brings serious gaming performance at an accessible price. Features powerful graphics and optimized cooling for extended gaming sessions.",
+    features: [
+      "NVIDIA GeForce RTX graphics card",
+      "15.6-inch Full HD 120Hz display",
+      "Game Shift technology for performance",
+      "Alienware-inspired design elements",
+    ],
   },
   {
     id: 27,
@@ -315,6 +577,16 @@ export default [
     image: redminote14,
     category: "Smartphones",
     productId: "sprmnote14",
+    reviewsCount: 198,
+    stock: 34,
+    description:
+      "Latest Redmi Note 14 5G combines flagship features with affordable pricing. Perfect for users seeking 5G connectivity and premium features.",
+    features: [
+      "5G connectivity with dual SIM support",
+      "High-resolution main camera",
+      "120Hz AMOLED display",
+      "Fast charging with large battery",
+    ],
   },
   {
     id: 28,
@@ -325,6 +597,16 @@ export default [
     image: vivov50,
     category: "Smartphones",
     productId: "spvivov50",
+    reviewsCount: 167,
+    stock: 26,
+    description:
+      "Stylish Vivo V50 5G focuses on camera excellence and design. Perfect for photography enthusiasts who want professional-quality mobile photography.",
+    features: [
+      "Advanced portrait photography system",
+      "5G connectivity with VoNR support",
+      "Sleek design with premium materials",
+      "Fast charging with power-efficient processor",
+    ],
   },
   {
     id: 29,
@@ -335,6 +617,16 @@ export default [
     image: hpvictus,
     category: "Laptops",
     productId: "lpthpvictus",
+    reviewsCount: 189,
+    stock: 15,
+    description:
+      "HP Victus gaming laptop offers excellent gaming performance with stylish design. Ideal for gamers who want quality hardware at competitive prices.",
+    features: [
+      "NVIDIA GeForce GTX/RTX graphics",
+      "144Hz Full HD gaming display",
+      "HP Omen Gaming Hub software",
+      "Backlit keyboard with WASD highlighting",
+    ],
   },
   {
     id: 30,
@@ -345,6 +637,16 @@ export default [
     image: vivoy18t,
     category: "Smartphones",
     productId: "spvivoy18t",
+    reviewsCount: 278,
+    stock: 42,
+    description:
+      "Budget-friendly Vivo Y18t offers essential smartphone features with reliable performance. Perfect for users seeking value without compromising quality.",
+    features: [
+      "Large display with eye-care technology",
+      "Dual-camera system with AI features",
+      "Long-lasting battery with power saving",
+      "Smooth performance for daily tasks",
+    ],
   },
   {
     id: 31,
@@ -355,6 +657,16 @@ export default [
     image: boat,
     category: "Audio",
     productId: "acboat450",
+    reviewsCount: 456,
+    stock: 78,
+    description:
+      "Popular boAt Rockerz 450 delivers signature boAt sound with wireless convenience. Perfect for music lovers who want quality audio on a budget.",
+    features: [
+      "Wireless Bluetooth connectivity",
+      "boAt signature sound with extra bass",
+      "Comfortable padded ear cushions",
+      "Hands-free calling with built-in mic",
+    ],
   },
   {
     id: 32,
@@ -365,6 +677,16 @@ export default [
     image: sgs24fe,
     category: "Smartphones",
     productId: "spsg24fe",
+    reviewsCount: 134,
+    stock: 22,
+    description:
+      "Samsung S24 FE brings flagship features to more users. Experience premium Samsung innovation with advanced camera system and powerful performance.",
+    features: [
+      "Galaxy AI features for enhanced productivity",
+      "Pro-grade camera system",
+      "Dynamic AMOLED 2X display",
+      "All-day battery with wireless charging",
+    ],
   },
   {
     id: 33,
@@ -375,6 +697,16 @@ export default [
     image: hp255,
     category: "Laptops",
     productId: "lpthp255",
+    reviewsCount: 167,
+    stock: 28,
+    description:
+      "Affordable HP Laptop 255 provides essential computing power for students and basic users. Reliable performance for everyday tasks and productivity.",
+    features: [
+      "AMD processor for efficient performance",
+      "15.6-inch HD display",
+      "Lightweight design for portability",
+      "Essential connectivity options",
+    ],
   },
   {
     id: 34,
@@ -385,6 +717,16 @@ export default [
     image: vivot3x,
     category: "Smartphones",
     productId: "spvivot3x",
+    reviewsCount: 212,
+    stock: 35,
+    description:
+      "Feature-packed Vivo T3X 5G offers excellent value with 5G connectivity and gaming performance. Perfect for young users who want modern features.",
+    features: [
+      "5G connectivity with gaming optimization",
+      "High-refresh rate display",
+      "AI-enhanced camera system",
+      "Fast charging with extended battery life",
+    ],
   },
   {
     id: 35,
@@ -395,6 +737,16 @@ export default [
     image: vivox200,
     category: "Smartphones",
     productId: "spvivox200",
+    reviewsCount: 89,
+    stock: 14,
+    description:
+      "Premium Vivo X200 Pro represents the pinnacle of mobile photography and performance. Designed for professionals and photography enthusiasts.",
+    features: [
+      "Professional-grade camera system",
+      "Zeiss optics with advanced image processing",
+      "Flagship processor with AI capabilities",
+      "Premium build quality with elegant design",
+    ],
   },
   {
     id: 36,
@@ -405,6 +757,16 @@ export default [
     image: redmia3x,
     category: "Smartphones",
     productId: "sprma3x",
+    reviewsCount: 345,
+    stock: 56,
+    description:
+      "Entry-level Redmi A3X provides smartphone essentials at an unbeatable price. Perfect for first-time smartphone users or as a backup device.",
+    features: [
+      "Large display for media consumption",
+      "Dual-camera system with AI features",
+      "Long-lasting battery for all-day use",
+      "MIUI optimizations for smooth performance",
+    ],
   },
   {
     id: 37,
@@ -415,6 +777,16 @@ export default [
     image: boatfurry,
     category: "Wearables",
     productId: "audbf01",
+    reviewsCount: 234,
+    stock: 41,
+    description:
+      "Stylish boAt Furry Headphones combine comfort with quality sound. Perfect for extended listening sessions with fashionable design elements.",
+    features: [
+      "Soft furry ear cushions for comfort",
+      "High-quality drivers for clear audio",
+      "Adjustable headband for perfect fit",
+      "Tangle-free cable design",
+    ],
   },
   {
     id: 38,
@@ -425,6 +797,16 @@ export default [
     image: boatspeaker,
     category: "Speakers",
     productId: "audbs01",
+    reviewsCount: 389,
+    stock: 67,
+    description:
+      "Portable boAt Bluetooth Speaker delivers powerful sound in a compact package. Perfect for outdoor activities and parties with wireless convenience.",
+    features: [
+      "Wireless Bluetooth connectivity",
+      "Compact and portable design",
+      "Water-resistant build quality",
+      "Enhanced bass with clear vocals",
+    ],
   },
   {
     id: 39,
@@ -435,6 +817,16 @@ export default [
     image: boatspeaker2,
     category: "Speakers",
     productId: "audbs02",
+    reviewsCount: 456,
+    stock: 73,
+    description:
+      "Rugged boAt Stone Speaker 2 built for adventure. Features durable construction and impressive sound quality for outdoor enthusiasts.",
+    features: [
+      "Rugged and durable construction",
+      "IPX5 water resistance rating",
+      "Extended battery life for long sessions",
+      "Powerful bass with 360-degree sound",
+    ],
   },
   {
     id: 40,
@@ -445,6 +837,16 @@ export default [
     image: camera,
     category: "Cameras",
     productId: "camdp01",
+    reviewsCount: 156,
+    stock: 19,
+    description:
+      "Professional Digital Camera Pro for photography enthusiasts. Features advanced controls and high-quality image sensors for stunning photographs.",
+    features: [
+      "High-resolution image sensor",
+      "Manual controls for creative photography",
+      "Multiple shooting modes and filters",
+      "Optical image stabilization",
+    ],
   },
   {
     id: 41,
@@ -455,6 +857,16 @@ export default [
     image: camera2,
     category: "Cameras",
     productId: "camuz01",
+    reviewsCount: 123,
+    stock: 15,
+    description:
+      "Ultra Zoom Camera with exceptional telephoto capabilities. Perfect for wildlife photography and capturing distant subjects with clarity.",
+    features: [
+      "Ultra-zoom lens with image stabilization",
+      "High-resolution viewfinder",
+      "4K video recording capabilities",
+      "Weather-sealed construction",
+    ],
   },
   {
     id: 42,
@@ -465,6 +877,16 @@ export default [
     image: fasttrack1,
     category: "Wearables",
     productId: "wearft01",
+    reviewsCount: 267,
+    stock: 33,
+    description:
+      "Feature-rich Fastrack Smart Watch tracks your fitness and keeps you connected. Perfect for active lifestyles with comprehensive health monitoring.",
+    features: [
+      "Comprehensive fitness tracking",
+      "Heart rate and sleep monitoring",
+      "Smart notifications and calls",
+      "Multiple sports modes and GPS",
+    ],
   },
   {
     id: 43,
@@ -475,6 +897,16 @@ export default [
     image: fasttrack2,
     category: "Wearables",
     productId: "wearft02",
+    reviewsCount: 298,
+    stock: 45,
+    description:
+      "Affordable Fastrack Reflex Beat focuses on essential fitness tracking. Perfect for users starting their fitness journey with basic smart features.",
+    features: [
+      "Basic fitness tracking features",
+      "Heart rate monitoring",
+      "Water-resistant design",
+      "Long battery life up to 7 days",
+    ],
   },
   {
     id: 44,
@@ -485,6 +917,16 @@ export default [
     image: gamingchair,
     category: "Gaming",
     productId: "gamgc01",
+    reviewsCount: 189,
+    stock: 12,
+    description:
+      "Professional Ergonomic Gaming Chair designed for extended gaming sessions. Features adjustable components and lumbar support for maximum comfort.",
+    features: [
+      "Ergonomic design with lumbar support",
+      "Adjustable height and armrests",
+      "High-quality gaming-grade materials",
+      "360-degree swivel with smooth rolling",
+    ],
   },
   {
     id: 45,
@@ -495,6 +937,16 @@ export default [
     image: gamingcontroller,
     category: "Gaming",
     productId: "gamgcon01",
+    reviewsCount: 345,
+    stock: 48,
+    description:
+      "Wireless Gaming Controller with precision controls and low latency. Perfect for competitive gaming with customizable buttons and ergonomic design.",
+    features: [
+      "Wireless connectivity with low latency",
+      "Customizable button mapping",
+      "Ergonomic design for extended gaming",
+      "Compatible with multiple gaming platforms",
+    ],
   },
   {
     id: 46,
@@ -505,6 +957,16 @@ export default [
     image: graphiccard,
     category: "Gaming",
     productId: "pcgpu01",
+    reviewsCount: 156,
+    stock: 8,
+    description:
+      "High-performance NVIDIA Graphics Card for gaming and content creation. Delivers exceptional visual performance with ray tracing and AI-enhanced features.",
+    features: [
+      "Ray tracing and DLSS technology",
+      "High-performance GPU architecture",
+      "Advanced cooling system",
+      "Support for 4K gaming and VR",
+    ],
   },
   {
     id: 47,
@@ -515,6 +977,16 @@ export default [
     image: monitor,
     category: "Gaming",
     productId: "monled01",
+    reviewsCount: 234,
+    stock: 16,
+    description:
+      "Large 27-inch LED Monitor perfect for gaming and productivity. Features high refresh rate and low input lag for competitive gaming advantage.",
+    features: [
+      "27-inch Full HD LED display",
+      "High refresh rate for smooth gaming",
+      "Low input lag and fast response time",
+      "Multiple connectivity options",
+    ],
   },
   {
     id: 48,
@@ -525,5 +997,15 @@ export default [
     image: noisewatch,
     category: "Wearables",
     productId: "wearnw01",
+    reviewsCount: 412,
+    stock: 52,
+    description:
+      "Affordable Noise Smartwatch with comprehensive health tracking. Perfect for fitness enthusiasts seeking smart features at competitive prices.",
+    features: [
+      "Comprehensive health and fitness tracking",
+      "Multiple sports modes and GPS",
+      "Smart notifications and music control",
+      "Long battery life with quick charging",
+    ],
   },
 ];

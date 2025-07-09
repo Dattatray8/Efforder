@@ -2,12 +2,14 @@ import { ShoppingCart } from "lucide-react";
 import React, { useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { useNavigate } from "react-router-dom";
 
 AOS.init();
 
 function ProductCard(item) {
   const [hover, setHover] = useState(false);
   item = item.data;
+  const navigation = useNavigate();
   return (
     <div
       className="bg-white relative sm:w-[20em] sm:h-[18em] w-[17rem] h-[14rem] flex-shrink-0 flex flex-col justify-center items-center transition cursor-pointer rounded-lg hover:shadow-xl my-2"
@@ -20,6 +22,9 @@ function ProductCard(item) {
       }}
       onMouseLeave={() => {
         setHover(false);
+      }}
+      onClick={()=>{
+        navigation(`/products/category/${item.category}/${item.productId}`)
       }}
     >
       <p className="absolute top-2 left-2 bg-[#ef4444] text-white font-semibold px-2 py-[0.1rem] rounded-full text-[0.8rem]">
