@@ -6,17 +6,44 @@ import watch from "../assets/slider/watch.webp";
 import watch2 from "../assets/slider/watch2.webp";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { useNavigate } from "react-router-dom";
 
 AOS.init();
 
 function Slider() {
   const sliderTabs = [
-    { img: speaker, title: "Mobile Speakers", boldTxt: "From 499" },
-    { img: headphone, title: "Wireless Headphones", boldTxt: "Grab Now" },
-    { img: watch, title: "Fastrack Smartwatches", boldTxt: "From 1399" },
-    { img: monitor, title: "Acer Monitor", boldTxt: "From 8000" },
-    { img: watch2, title: "Noise Smartwatches", boldTxt: "From 1099" },
+    {
+      img: speaker,
+      title: "Mobile Speakers",
+      boldTxt: "From 499",
+      url: "/products/category/Speakers",
+    },
+    {
+      img: headphone,
+      title: "Wireless Headphones",
+      boldTxt: "Grab Now",
+      url: "/products/category/Audio",
+    },
+    {
+      img: watch,
+      title: "Fastrack Smartwatches",
+      boldTxt: "From 1399",
+      url: "/products/category/Wearables",
+    },
+    {
+      img: monitor,
+      title: "Acer Monitor",
+      boldTxt: "From 8000",
+      url: "/products/category/Gaming",
+    },
+    {
+      img: watch2,
+      title: "Noise Smartwatches",
+      boldTxt: "From 1099",
+      url: "/products/category/Wearables",
+    },
   ];
+  const navigation = useNavigate();
   return (
     <div className="bg-[#e6f0fe] max-w-screen p-8">
       <div className="bg-white flex flex-col rounded-lg">
@@ -38,10 +65,13 @@ function Slider() {
               data-aos-duration="1500"
               data-aos-once="true"
               className="flex flex-col justify-center items-center gap-4 cursor-pointer"
+              onClick={() => {
+                navigation(item.url);
+              }}
             >
               <img
                 src={item.img}
-                alt=""
+                alt="productImage"
                 className="h-40 w-fit hover:scale-105 transition"
               />
               <div className="flex flex-col justify-center items-center">

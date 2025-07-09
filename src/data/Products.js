@@ -1,5 +1,5 @@
 import iphone15 from "../assets/products/iphone15.webp";
-import lenovothink from "../assets/products/lenovothinkpad.jpg";
+import lenovothink from "../assets/products/lenovothinkpad.webp";
 import jbl from "../assets/products/jbl.webp";
 import dell3530 from "../assets/products/dell3530.webp";
 import redmi13 from "../assets/products/redmi13.webp";
@@ -8,7 +8,7 @@ import sgs23ul from "../assets/products/sgs23ul.webp";
 import lenovov14 from "../assets/products/lenovov14.webp";
 import redminote13 from "../assets/products/redminote13pro.webp";
 import acernitro from "../assets/products/acerv.webp";
-import boultx from "../assets/products/boultx.jpg";
+import boultx from "../assets/products/boultx.webp";
 import hp15 from "../assets/products/hp15.webp";
 import iphone16 from "../assets/products/iphone16.webp";
 import dell3440 from "../assets/products/dell3440.webp";
@@ -17,23 +17,35 @@ import boultq from "../assets/products/boultq.webp";
 import acerneo from "../assets/products/acerneo.webp";
 import sga23 from "../assets/products/sga23.webp";
 import acerswift from "../assets/products/acerswift.webp";
-import sgs25 from "../assets/products/sgs25.jpg";
+import sgs25 from "../assets/products/sgs25.webp";
 import lenovoslim3 from "../assets/products/lenovoslim3.webp";
 import iphone13 from "../assets/products/iphone13.webp";
 import hp14 from "../assets/products/hp14.webp";
 import iphone16max from "../assets/products/iphone16promax.webp";
-import lenovoloq from "../assets/products/lenovoloq.jpg";
+import lenovoloq from "../assets/products/lenovoloq.webp";
 import dellg15 from "../assets/products/delg15.webp";
 import redminote14 from "../assets/products/redminote14.webp";
-import vivov50 from "../assets/products/vivov50.jpg";
+import vivov50 from "../assets/products/vivov50.webp";
 import hpvictus from "../assets/products/hpvictus.webp";
-import vivoy18t from "../assets/products/vivoy18t.jpg";
+import vivoy18t from "../assets/products/vivoy18t.webp";
 import boat from "../assets/products/boat450.webp";
 import sgs24fe from "../assets/products/sgs24fe.webp";
 import hp255 from "../assets/products/hp255.webp";
-import vivot3x from "../assets/products/vivot3x.jpg";
-import vivox200 from "../assets/products/vivox200.jpg";
+import vivot3x from "../assets/products/vivot3x.webp";
+import vivox200 from "../assets/products/vivox200.webp";
 import redmia3x from "../assets/products/redmia3x.webp";
+import boatfurry from "../assets/products/boatfurry.webp";
+import boatspeaker from "../assets/products/boatspeaker.webp";
+import boatspeaker2 from "../assets/products/boatspeaker2.webp";
+import camera from "../assets/products/camera.webp";
+import camera2 from "../assets/products/camera2.webp";
+import fasttrack1 from "../assets/products/fasttrack1.webp";
+import fasttrack2 from "../assets/products/fasttrack2.webp";
+import gamingchair from "../assets/products/gamingchair.webp";
+import gamingcontroller from "../assets/products/gamingcontroller.webp";
+import graphiccard from "../assets/products/graphiccard.webp";
+import monitor from "../assets/products/monitor.webp";
+import noisewatch from "../assets/products/noisewatch.webp";
 
 export default [
   {
@@ -393,5 +405,125 @@ export default [
     image: redmia3x,
     category: "Smartphones",
     productId: "sprma3x",
+  },
+  {
+    id: 37,
+    name: "boAt Furry Headphones",
+    price: 2499,
+    oldPrice: 3999,
+    discount: 38,
+    image: boatfurry,
+    category: "Wearables",
+    productId: "audbf01",
+  },
+  {
+    id: 38,
+    name: "boAt Bluetooth Speaker",
+    price: 1999,
+    oldPrice: 2999,
+    discount: 33,
+    image: boatspeaker,
+    category: "Speakers",
+    productId: "audbs01",
+  },
+  {
+    id: 39,
+    name: "boAt Stone Speaker 2",
+    price: 1799,
+    oldPrice: 2699,
+    discount: 33,
+    image: boatspeaker2,
+    category: "Speakers",
+    productId: "audbs02",
+  },
+  {
+    id: 40,
+    name: "Digital Camera Pro",
+    price: 12499,
+    oldPrice: 15999,
+    discount: 22,
+    image: camera,
+    category: "Cameras",
+    productId: "camdp01",
+  },
+  {
+    id: 41,
+    name: "Ultra Zoom Camera",
+    price: 15999,
+    oldPrice: 19999,
+    discount: 20,
+    image: camera2,
+    category: "Cameras",
+    productId: "camuz01",
+  },
+  {
+    id: 42,
+    name: "Fastrack Smart Watch",
+    price: 3499,
+    oldPrice: 4499,
+    discount: 22,
+    image: fasttrack1,
+    category: "Wearables",
+    productId: "wearft01",
+  },
+  {
+    id: 43,
+    name: "Fastrack Reflex Beat",
+    price: 2299,
+    oldPrice: 2999,
+    discount: 23,
+    image: fasttrack2,
+    category: "Wearables",
+    productId: "wearft02",
+  },
+  {
+    id: 44,
+    name: "Ergonomic Gaming Chair",
+    price: 9499,
+    oldPrice: 11999,
+    discount: 21,
+    image: gamingchair,
+    category: "Gaming",
+    productId: "gamgc01",
+  },
+  {
+    id: 45,
+    name: "Wireless Gaming Controller",
+    price: 2499,
+    oldPrice: 3499,
+    discount: 29,
+    image: gamingcontroller,
+    category: "Gaming",
+    productId: "gamgcon01",
+  },
+  {
+    id: 46,
+    name: "NVIDIA Graphic Card",
+    price: 24999,
+    oldPrice: 30999,
+    discount: 19,
+    image: graphiccard,
+    category: "Gaming",
+    productId: "pcgpu01",
+  },
+  {
+    id: 47,
+    name: '27" LED Monitor',
+    price: 11499,
+    oldPrice: 13999,
+    discount: 18,
+    image: monitor,
+    category: "Gaming",
+    productId: "monled01",
+  },
+  {
+    id: 48,
+    name: "Noise Smartwatch",
+    price: 2999,
+    oldPrice: 3999,
+    discount: 25,
+    image: noisewatch,
+    category: "Wearables",
+    productId: "wearnw01",
   },
 ];

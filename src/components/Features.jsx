@@ -30,7 +30,7 @@ function Features() {
   ];
   return (
     <div className="w-full bg-[#e6f0fe] flex justify-center items-center p-8 overflow-hidden">
-      <div className="flex justify-center items-center flex-wrap w-[80%]">
+      <div className="flex justify-center items-center flex-wrap w-[80%] gap-8">
         {Features.map((item, i) => (
           <div
             className="w-[15em] flex flex-col justify-center items-center gap-3"

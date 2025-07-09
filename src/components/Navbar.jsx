@@ -54,14 +54,16 @@ function navbar() {
 
   return (
     <>
-      <div
-        className="w-screen shadow-md h-20 flex justify-center items-center z-20 bg-[#e6f0fe] fixed"
-        onClick={() => {
-          navigation("/");
-        }}
-      >
+      <div className="w-screen shadow-md h-20 flex justify-center items-center z-20 bg-[#e6f0fe] fixed">
         <div className="w-[80%] flex items-center justify-between">
-          <img src={logo} alt="Efforder Logo" className="w-35 cursor-pointer" />
+          <img
+            src={logo}
+            alt="Efforder Logo"
+            className="w-35 cursor-pointer"
+            onClick={() => {
+              navigation("/");
+            }}
+          />
           <div className="flex gap-16 items-center relative">
             <div
               onClick={() => {
@@ -135,6 +137,7 @@ function navbar() {
                           className="flex items-center gap-2 p-2 hover:bg-gray-100 cursor-pointer"
                           onClick={() => {
                             setShopOpen(false);
+                            navigation(`/products/category/${item.name}`);
                           }}
                         >
                           {item.icon}
