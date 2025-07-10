@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import hero from "../assets/hero.webp";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { useLocation } from "react-router-dom";
 
 AOS.init();
 
@@ -12,6 +13,15 @@ function Hero() {
       section.scrollIntoView({ behavior: "smooth" });
     }
   };
+  const location = useLocation();
+  useEffect(() => {
+    if (location.state?.scrollTo) {
+      const section = document.getElementById(location.state.scrollTo);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [location]);
 
   return (
     <div
