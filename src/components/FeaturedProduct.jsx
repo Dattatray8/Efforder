@@ -3,7 +3,7 @@ import Products from "../data/Products";
 import GetRandomProducts from "../utils/GetRandomProducts";
 import ProductCard from "./ProductCard";
 
-function FeaturedProduct() {
+function FeaturedProduct({title}) {
   const [featuredProducts, setFeaturedProducts] = useState([]);
   useEffect(() => {
     setFeaturedProducts(GetRandomProducts(Products, 4));
@@ -20,7 +20,7 @@ function FeaturedProduct() {
           data-aos-duration="1500"
           data-aos-once="true"
         >
-          Featured Products
+          {title}
         </div>
         <div className="flex justify-center items-center flex-wrap h-auto sm:gap-10 gap-5">
           {featuredProducts.map((item) => (

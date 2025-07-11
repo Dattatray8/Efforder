@@ -11,7 +11,7 @@ function Home() {
       <Hero />
       <Slider />
       <ShopviaCategory />
-      <FeaturedProduct />
+      <FeaturedProduct title={"Featured Products"}/>
       <Features />
     </div>
   )
