@@ -23,8 +23,12 @@ function ProductCard(item) {
       onMouseLeave={() => {
         setHover(false);
       }}
-      onClick={()=>{
-        navigation(`/products/category/${item.category}/${item.productId}`)
+      onClick={() => {
+        navigation(`/products/category/${item.category}/${item.productId}`);
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
       }}
     >
       <p className="absolute top-2 left-2 bg-[#ef4444] text-white font-semibold px-2 py-[0.1rem] rounded-full text-[0.8rem]">
