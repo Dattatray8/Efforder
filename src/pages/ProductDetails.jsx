@@ -10,6 +10,7 @@ function ProductDetails() {
   useEffect(() => {
     setProduct(GetProduct(Products, pId));
   }, [pId]);
+  let [productCount, setProductCount] = useState(1);
 
   return (
     <div className="mt-20 w-full overflow-hidden">
@@ -24,7 +25,7 @@ function ProductDetails() {
             className="w-full h-full p-[5%]"
           />
         </div>
-        <div className="md:w-1/2 w-full py-[2%] px-[4%] flex flex-col gap-6">
+        <div className="md:w-1/2 w-full py-[2%] px-[4%] flex flex-col gap-6 my-6">
           <div className="flex flex-col gap-1">
             <p className="text-4xl font-bold">{product.name}</p>
             <div className="flex w-full gap-8">
@@ -55,6 +56,35 @@ function ProductDetails() {
             </ul>
           </div>
           <hr />
+          <div className="flex w-full gap-4 items-center">
+            <p className="font-medium">Quantity:</p>
+            <div className="flex border-gray-300 border rounded-md">
+              <p
+                className={`px-4 py-2 ${
+                  productCount > 1 && "hover:bg-gray-100 rounded-md"
+                }`}
+                onClick={() => {
+                  if (productCount > 1) {
+                    setProductCount((productCount -= 1));
+                  }
+                }}
+              >
+                -
+              </p>
+              <p className="py-2 px-4">{productCount}</p>
+              <p
+                className="cursor-pointer hover:bg-gray-100 py-2 px-4 rounded-md"
+                onClick={() => {
+                  setProductCount((productCount += 1));
+                }}
+              >
+                +
+              </p>
+            </div>
+          </div>
+          <div className="flex justify-center mx-[5%] w-[90%] bg-black text-white font-medium py-3 hover:bg-[#000000dd] transition rounded-md cursor-pointer">
+            Add to cart
+          </div>
         </div>
       </div>
       <div>
