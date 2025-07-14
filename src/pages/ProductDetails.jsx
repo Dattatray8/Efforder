@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Products from "../data/Products";
 import GetProduct from "../utils/GetProduct";
 import FeaturedProduct from "../components/FeaturedProduct";
+import { RefreshCcw, ShieldCheck, Truck } from "lucide-react";
 
 function ProductDetails() {
   const { pId } = useParams();
@@ -84,6 +85,20 @@ function ProductDetails() {
           </div>
           <div className="flex justify-center mx-[5%] w-[90%] bg-black text-white font-medium py-3 hover:bg-[#000000dd] transition rounded-md cursor-pointer">
             Add to cart
+          </div>
+          <div className="flex flex-col sm:flex-row md:flex-col md:gap-4 lg:flex-row lg:gap-10 sm:gap-10 gap-2 justify-center mt-4">
+            <div className="flex gap-2 items-center">
+              <Truck className="text-gray-500 w-5 h-5" />
+              <p>Free shipping over ₹50</p>
+            </div>
+            <div className="flex gap-2 items-center">
+              <ShieldCheck className="text-gray-500 w-5 h-5" />
+              <p>2-Year Warranty</p>
+            </div>
+            <div className="flex gap-2 items-center">
+              <RefreshCcw className="text-gray-500 w-5 h-5" />
+              <p>30-Day Returns</p>
+            </div>
           </div>
         </div>
       </div>
