@@ -4,6 +4,7 @@ import Home from "../pages/Home";
 import MainLayout from "../layouts/MainLayout";
 import Products from "../pages/Products";
 import ProductDetails from "../pages/ProductDetails";
+import Search from "../pages/Search";
 
 function AppRoutes() {
   return (
@@ -15,6 +16,7 @@ function AppRoutes() {
           path="/products/category/:cName/:pId"
           element={<ProductDetails />}
         />
+        <Route path="/search/:searchQuery" element={<Search />} />
       </Route>
     </Routes>
   );

@@ -19,6 +19,7 @@ function navbar() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [shopOpen, setShopOpen] = useState(false);
   const searchRef = useRef(null);
+  let [searchValue, setSearchValue] = useState("");
 
   const categories = [
     { name: "Laptops", icon: <Laptop /> },
@@ -77,6 +78,19 @@ function navbar() {
                     placeholder="Search..."
                     className="outline-none"
                     ref={searchRef}
+                    value={searchValue}
+                    onInput={(e) => {
+                      setSearchValue(e.target.value);
+                    }}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      setSearchValue(value);
+                      if (value === "") {
+                        navigation("/");
+                      } else {
+                        navigation(`/search/${e.target.value}`);
+                      }
+                    }}
                   />
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
