@@ -1,5 +1,6 @@
 import express, { Router } from "express";
 import {
+  adminLogin,
   googleLogin,
   Home,
   login,
@@ -14,5 +15,6 @@ authRouter.post("/signup", signUp);
 authRouter.post("/login", login);
 authRouter.post("/logout", logout);
 authRouter.post("/googleLogin", googleLogin);
+authRouter.post("/adminlogin", adminLogin);
 
 export default authRouter;

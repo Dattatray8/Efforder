@@ -16,7 +16,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { userDataContext } from "../context/UserContext";
 import axios from "axios";
-import { authDataContext } from "../context/authContext";
+import { authDataContext } from "../context/AuthContext";
 
 function navbar() {
   const [searchOpen, setSearchOpen] = useState(false);

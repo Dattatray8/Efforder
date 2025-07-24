@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
-import { authDataContext } from "../context/authContext";
+import { authDataContext } from "../context/AuthContext";
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../utils/Firebase.js";
 import UserContext, { userDataContext } from "../context/UserContext.jsx";

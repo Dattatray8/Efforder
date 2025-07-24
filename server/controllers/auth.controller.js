@@ -1,4 +1,4 @@
-import generateToken from "../config/token.js";
+import { generateToken, generateAdminToken } from "../config/token.js";
 import Users from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import validator from "validator";
@@ -37,8 +37,8 @@ export const signUp = async (req, res) => {
     }
     res.cookie("token", token, {
       httponly: true,
-      secure: process.env.NODE_ENVIRONMENT == "production",
-      samesite: "strict",
+      secure: false,
+      samesite: "Strict",
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
     res.status(201).send("User created successfully");
@@ -76,8 +76,8 @@ export const login = async (req, res) => {
     }
     res.cookie("token", token, {
       httponly: true,
-      secure: process.env.NODE_ENVIRONMENT == "production",
-      samesite: "strict",
+      secure: false,
+      samesite: "Strict",
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
     res.status(200).send("login successfull");
@@ -110,12 +110,50 @@ export const googleLogin = async (req, res) => {
     }
     res.cookie("token", token, {
       httponly: true,
-      secure: process.env.NODE_ENVIRONMENT == "production",
-      samesite: "strict",
+      secure: false,
+      samesite: "Strict",
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
     res.status(200).send("Google login successfull");
   } catch (error) {
     return res.status(500).json({ message: "Google login error" });
+  }
+};
+
+export const adminLogin = async (req, res) => {
+  try {
+    let { email, password } = req.body;
+    if (
+      email === process.env.ADMIN_EMAIL &&
+      password === process.env.ADMIN_PASSWORD
+    ) {
+      let token;
+      try {
+        token = generateAdminToken(email);
+      } catch (err) {
+        return res.status(400).json({ message: "admin email not found" });
+      }
+      res.cookie("token", token, {
+        httponly: true,
+        secure: false,
+        samesite: "Strict",
+        maxAge: 1 * 24 * 60 * 60 * 1000,
+      });
+      res.status(200).send("Admin login successfull");
+    }
+  } catch (err) {
+    return res.status(500).json({ message: "Admin login error" });
+  }
+};
+
+export const getAdmin = async (req, res) => {
+  try {
+    let adminEmail = req.email;
+    if (!adminEmail) {
+      return res.status(400).json({ message: "Admin email not found" });
+    }
+    return res.status(201).json({ email: adminEmail, role: "Admin" });
+  } catch (error) {
+    return res.status(500).json({ message: "Server side error" });
   }
 };
