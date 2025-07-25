@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
 import axios from "axios";
 import { authDataContext } from "../context/AuthContext";
+import { userDataContext } from "../context/UserContext";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -12,6 +13,7 @@ function Login() {
   const navigation = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const { serverUrl } = useContext(authDataContext);
+  const { getAdminData } = useContext(userDataContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,10 +32,9 @@ function Login() {
         )
         .then(async (e) => {
           navigation("/");
+          getAdminData();
           console.log(e);
-          // await getCurrentUser();
         });
-      navigation("/");
     } catch (error) {
       if (error.response.status == 400) {
         setEmailErrorMessge(error.response.data.message);

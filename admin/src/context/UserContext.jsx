@@ -14,10 +14,9 @@ function UserContext({ children }) {
       let { data } = await axios.get(serverUrl + "/api/user/getadmin", {
         withCredentials: true,
       });
-      console.log(data);
       setAdminData(data);
     } catch (error) {
-      navigation("/login"); 
+      navigation("/login");
       console.log(error);
     }
   };

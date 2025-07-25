@@ -18,7 +18,7 @@ import { userDataContext } from "../context/UserContext";
 import axios from "axios";
 import { authDataContext } from "../context/AuthContext";
 
-function navbar() {
+function Navbar() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [shopOpen, setShopOpen] = useState(false);
   const searchRef = useRef(null);
@@ -366,4 +366,4 @@ function navbar() {
   );
 }
 
-export default navbar;
+export default Navbar;
