@@ -1,9 +1,10 @@
 import React from 'react'
+import SiderBar from '../components/SiderBar'
 
 function Home() {
   return (
-    <div>
-      
+    <div className=''>
+      <SiderBar />
     </div>
   )
 }
