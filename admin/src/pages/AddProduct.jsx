@@ -1,6 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import axios from "axios";
+import { useContext } from "react";
+import { authDataContext } from "../context/AuthContext";
 
 function AddProduct() {
+  const { serverUrl } = useContext(authDataContext);
+
   const [formData, setFormData] = useState({
     name: "",
     price: "",
@@ -39,21 +44,30 @@ function AddProduct() {
     if (file) {
       setFormData((prev) => ({
         ...prev,
-        image: URL.createObjectURL(file),
+        image: file,
       }));
 
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setImagePreview(reader.result);
-      };
-      reader.readAsDataURL(file);
+      setImagePreview(URL.createObjectURL(file));
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Form Data:", formData);
-    // Here you would typically send the data to your backend
+    try {
+      const response = await axios.post(
+        `${serverUrl}/api/products/addProduct`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      console.log(response);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    }
   };
 
   return (
@@ -241,13 +255,11 @@ function AddProduct() {
             </label>
             <textarea
               name="features"
-              value={formData.features.join("\n")}
+              value={formData.features}
               onChange={(e) =>
                 setFormData((prev) => ({
                   ...prev,
-                  features: e.target.value
-                    .split("\n")
-                    .filter((f) => f.trim() !== ""),
+                  features: e.target.value,
                 }))
               }
               rows="6"

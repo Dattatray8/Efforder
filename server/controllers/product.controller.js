@@ -12,14 +12,14 @@ export const addProduct = async (req, res) => {
       productId,
       reviewCount,
       stock,
-      features,
+      description,
     } = req.body;
-    let description = req.body.description;
-    let descriptionArray = description
+    let features = req.body.features;
+    let featuresArray = features
       .split("\n")
       .map((line) => line.trim())
       .filter(Boolean);
-    let image = await uploadCloudinary(req.file);
+    let image = await uploadCloudinary(req.file.path);
     const product = await Product.create({
       name,
       price,
@@ -29,8 +29,8 @@ export const addProduct = async (req, res) => {
       productId,
       reviewCount,
       stock,
-      description: descriptionArray,
-      features,
+      description,
+      features: featuresArray,
       image,
     });
     return res.status(201).json({
@@ -46,4 +46,3 @@ export const addProduct = async (req, res) => {
     });
   }
 };
-
