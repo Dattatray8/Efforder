@@ -46,3 +46,38 @@ export const addProduct = async (req, res) => {
     });
   }
 };
+
+export const getProducts = async (req, res) => {
+  try {
+    const products = await Product.find();
+    return res.status(200).json({
+      success: true,
+      message: "List of products: ",
+      products,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Failed to get Products",
+      error: error.message,
+    });
+  }
+};
+
+export const removeProduct = async (req, res) => {
+  try {
+    const { id } = req.params;
+    let product = await Product.findByIdAndDelete(id);
+    return res.status(200).json({
+      success: true,
+      message: "Product removed successfully",
+      product,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Failed to remove product",
+      error: error.message,
+    });
+  }
+};
