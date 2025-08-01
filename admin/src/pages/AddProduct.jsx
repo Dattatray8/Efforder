@@ -95,8 +95,8 @@ function AddProduct() {
   };
 
   return (
-    <div className="pl-[15%] pt-20 pr-8 pb-8 bg-blue-50 min-h-screen">
-      <div className="max-w-4xl mx-auto p-8">
+    <div className="pt-20 p-4 bg-blue-50 min-h-screen">
+      <div className="max-w-4xl mx-auto md:p-8 p-4">
         <h1 className="text-3xl font-bold text-gray-800 mb-8 border-b pb-4">
           Add New Product
         </h1>
