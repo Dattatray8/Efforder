@@ -51,8 +51,7 @@ function AddProduct() {
     }
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     for (let key in formData) {
       if (["oldPrice", "discount", "reviewCount"].includes(key)) continue;
 
@@ -89,6 +88,7 @@ function AddProduct() {
         }
       );
       console.log(response);
+      alert("Product added successfully!");
     } catch (error) {
       console.error("Error submitting form:", error);
     }
@@ -101,7 +101,7 @@ function AddProduct() {
           Add New Product
         </h1>
 
-        <div onSubmit={handleSubmit} className="space-y-6">
+        <div className="space-y-6">
           <div className="bg-gray-50 p-6 rounded-lg border-2 border-dashed border-gray-300">
             <label className="block text-sm font-semibold text-gray-700 mb-4">
               Product Image *
