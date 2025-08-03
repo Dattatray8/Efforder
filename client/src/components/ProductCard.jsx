@@ -1,13 +1,15 @@
 import { ShoppingCart } from "lucide-react";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useNavigate } from "react-router-dom";
+import { ProductDataContext } from "../context/ProductContext";
 
 AOS.init();
 
 function ProductCard(item) {
   const [hover, setHover] = useState(false);
+  let { setCartItemsCount, cartItemsCount } = useContext(ProductDataContext);
   item = item.data;
   const navigation = useNavigate();
   return (
@@ -43,7 +45,12 @@ function ProductCard(item) {
       />
       {hover && (
         <div className="absolute flex justify-center items-center bg-gradient-to-t from-black/70 to-transparent w-full h-12 top-30 py-6 transition ease-in-out">
-          <div className="flex py-1 gap-2 justify-center items-center px-18 rounded-md bg-white hover:bg-[#ffffffbe]">
+          <div
+            className="flex py-1 gap-2 justify-center items-center px-18 rounded-md bg-white hover:bg-[#ffffffbe]"
+            onClick={() => {
+              setCartItemsCount((cartItemsCount) => cartItemsCount + 1);
+            }}
+          >
             <ShoppingCart className="w-5" />
             <p className="font-semibold">Add to cart</p>
           </div>

@@ -6,6 +6,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import userRoutes from "./routes/user.routes.js";
 import productRoutes from "./routes/products.routes.js";
+import cartRouter from "./routes/cart.routes.js";
 
 dotenv.config();
 
@@ -23,6 +24,7 @@ app.use(
 app.use("/api/auth", authRouter);
 app.use("/api/user", userRoutes);
 app.use("/api/products", productRoutes);
+app.use("/api/cart", cartRouter);
 
 app.listen(process.env.PORT || 6000, () => {
   dbconnection();

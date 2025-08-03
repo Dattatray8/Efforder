@@ -9,8 +9,14 @@ import ErrorMessage from "../components/ErrorMessage";
 
 function ProductDetails() {
   const { pId } = useParams();
-  const { products, fetchProducts, loading, error } =
-    useContext(ProductDataContext);
+  const {
+    products,
+    fetchProducts,
+    loading,
+    error,
+    cartItemsCount,
+    setCartItemsCount,
+  } = useContext(ProductDataContext);
   const [product, setProduct] = useState(null);
   const [productNotFound, setProductNotFound] = useState(false);
   const [productCount, setProductCount] = useState(1);
@@ -186,6 +192,9 @@ function ProductDetails() {
           <button
             className="flex justify-center mx-[5%] w-[90%] bg-black text-white font-medium py-3 hover:bg-[#000000dd] transition rounded-md cursor-pointer"
             disabled={product.stock === 0}
+            onClick={() =>
+              setCartItemsCount((cartItemsCount) => cartItemsCount + 1)
+            }
           >
             {product.stock === 0 ? "Out of Stock" : "Add to cart"}
           </button>

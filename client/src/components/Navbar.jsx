@@ -17,6 +17,7 @@ import { useNavigate } from "react-router-dom";
 import { userDataContext } from "../context/UserContext";
 import axios from "axios";
 import { authDataContext } from "../context/AuthContext";
+import { ProductDataContext } from "../context/ProductContext";
 
 function Navbar() {
   const [searchOpen, setSearchOpen] = useState(false);
@@ -27,6 +28,7 @@ function Navbar() {
   const [sideBarOpen, setSideBarOpen] = useState(false);
   const { userData, getCurrentUser, setUserData } = useContext(userDataContext);
   const [showProfile, setShowProfile] = useState(false);
+  const { cartItemsCount } = useContext(ProductDataContext);
   useEffect(() => {
     getCurrentUser();
   }, []);
@@ -229,7 +231,7 @@ function Navbar() {
             <div className={navUiClasses[0].div + " relative"}>
               <ShoppingCart className="text-[#394762] group-hover:text-blue-600 group" />
               <p className="absolute right-[-0.9em] top-[-0.7em] text-white text-[0.8em] bg-[#394762] group-hover:bg-blue-600 h-5 w-5 flex justify-center items-center rounded-full">
-                0
+                {cartItemsCount}
               </p>
             </div>
           </div>
@@ -353,7 +355,7 @@ function Navbar() {
               <div className={navUiClasses[0].div + " relative"}>
                 <ShoppingCart className="text-[#394762] group-hover:text-blue-600 group" />
                 <p className="absolute right-[-0.9em] top-[-0.7em] text-white text-[0.8em] bg-[#394762] group-hover:bg-blue-600 h-5 w-5 flex justify-center items-center rounded-full">
-                  0
+                  {cartItemsCount}
                 </p>
               </div>
             </div>

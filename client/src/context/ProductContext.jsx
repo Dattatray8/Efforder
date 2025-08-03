@@ -9,15 +9,16 @@ function ProductContext({ children }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const { serverUrl } = useContext(authDataContext);
+  let [cartItemsCount, setCartItemsCount] = useState(0);
 
   const fetchProducts = async () => {
     try {
       setLoading(true);
       setError(null);
-      
+
       const res = await axios.get(serverUrl + "/api/products/getProducts");
       console.log(res.data.products);
-      
+
       if (res.data.success) {
         setProducts(res.data.products || []);
       } else {
@@ -38,13 +39,15 @@ function ProductContext({ children }) {
       await fetchProducts();
     };
     fetchData();
-  }, [serverUrl]); 
+  }, [serverUrl]);
 
   const value = {
     products,
     loading,
     error,
     fetchProducts,
+    cartItemsCount,
+    setCartItemsCount,
   };
 
   return (
