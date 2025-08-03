@@ -95,7 +95,7 @@ function Navbar() {
                     onChange={(e) => {
                       const value = e.target.value;
                       setSearchValue(value);
-                      navigation(value === "" ? "/" : `/search/${value}`);
+                      navigation(value && `/search?q=${value}`);
                     }}
                   />
                   <svg
@@ -278,7 +278,7 @@ function Navbar() {
                 onChange={(e) => {
                   const value = e.target.value;
                   setSearchValue(value);
-                  navigation(value === "" ? "/" : `/search/${value}`);
+                  navigation(value && `/search?q=${value}`);
                 }}
               />
               <svg

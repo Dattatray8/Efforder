@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Laptop,
   Smartphone,
@@ -24,7 +23,7 @@ function ShopviaCategory() {
       color: "bg-indigo-50 text-indigo-600",
     },
     {
-      name: "Smartphones",
+      name: "SmartPhones",
       icon: <Smartphone />,
       color: "bg-purple-50 text-purple-600",
     },

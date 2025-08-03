@@ -1,4 +1,3 @@
-import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "../pages/Home";
 import MainLayout from "../layouts/MainLayout";
@@ -18,7 +17,7 @@ function AppRoutes() {
           path="/products/category/:cName/:pId"
           element={<ProductDetails />}
         />
-        <Route path="/search/:searchQuery" element={<Search />} />
+        <Route path="/search" element={<Search />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/signin" element={<Signin />} />
       </Route>
