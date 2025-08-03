@@ -68,7 +68,11 @@ function ShopviaCategory() {
             data-aos-duration="1500"
             data-aos-once="true"
             onClick={() => {
-              navigation(`/products/category/${item.name}`);
+              navigation(`/category?name=${item.name}`);
+              window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+              });
             }}
           >
             <div className="scale-125">{item.icon}</div>

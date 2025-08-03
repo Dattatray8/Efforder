@@ -5,7 +5,7 @@ import { ProductDataContext } from "../context/ProductContext";
 import LoadingSpinner from "../components/LoadingSpinner";
 import ErrorMessage from "../components/ErrorMessage";
 import ProductCard from "../components/ProductCard";
-
+ 
 function Search() {
   const { search } = useLocation();
   const searchQuery = new URLSearchParams(search).get("q");

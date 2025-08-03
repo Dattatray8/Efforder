@@ -24,7 +24,7 @@ function ProductCard(item) {
         setHover(false);
       }}
       onClick={() => {
-        navigation(`/products/category/${item.category}/${item.productId}`);
+        navigation(`/category/${item.category}/product/${item.productId}`);
         window.scrollTo({
           top: 0,
           behavior: "smooth",

@@ -12,9 +12,9 @@ function AppRoutes() {
     <Routes>
       <Route path="/" element={<MainLayout />}>
         <Route path="/" element={<Home />} />
-        <Route path="/products/category/:cName" element={<Products />} />
+        <Route path="/category" element={<Products />} />
         <Route
-          path="/products/category/:cName/:pId"
+          path="/category/:cName/product/:pId"
           element={<ProductDetails />}
         />
         <Route path="/search" element={<Search />} />

@@ -280,6 +280,15 @@ function Navbar() {
                   setSearchValue(value);
                   navigation(value && `/search?q=${value}`);
                 }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    const value = e.target.value;
+                    if (value) {
+                      navigation(`/search?q=${value}`);
+                    }
+                    setSideBarOpen(false);
+                  }
+                }}
               />
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -288,6 +297,12 @@ function Navbar() {
                 strokeWidth={1.5}
                 stroke="currentColor"
                 className="size-6 absolute cursor-pointer hover:text-blue-600 text-[#394762] right-3"
+                onClick={() => {
+                  if (searchValue) {
+                    navigation(`/search?q=${searchValue}`);
+                  }
+                  setSideBarOpen(false);
+                }}
               >
                 <path
                   strokeLinecap="round"

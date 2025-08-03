@@ -16,31 +16,31 @@ function Slider() {
       img: speaker,
       title: "Mobile Speakers",
       boldTxt: "From 499",
-      url: "/products/category/Speakers",
+      url: "/category?name=Speakers",
     },
     {
       img: headphone,
       title: "Wireless Headphones",
       boldTxt: "Grab Now",
-      url: "/products/category/Audio",
+      url: "/category?name=Audio",
     },
     {
       img: watch,
       title: "Fastrack Smartwatches",
       boldTxt: "From 1399",
-      url: "/products/category/Wearables",
+      url: "/category?name=Wearables",
     },
     {
       img: monitor,
       title: "Acer Monitor",
       boldTxt: "From 8000",
-      url: "/products/category/Gaming",
+      url: "/category?name=Gaming",
     },
     {
       img: watch2,
       title: "Noise Smartwatches",
       boldTxt: "From 1099",
-      url: "/products/category/Wearables",
+      url: "/category?name=Wearables",
     },
   ];
   const navigation = useNavigate();
@@ -67,6 +67,10 @@ function Slider() {
               className="flex flex-col justify-center items-center gap-4 cursor-pointer"
               onClick={() => {
                 navigation(item.url);
+                window.scrollTo({
+                  top: 0,
+                  behavior: "smooth",
+                });
               }}
             >
               <img

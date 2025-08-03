@@ -1,14 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
 import GetProductsViaCategory from "../utils/GetProductsViaCategory";
 import ProductCard from "../components/ProductCard";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
 import { ProductDataContext } from "../context/ProductContext";
 import LoadingSpinner from "../components/LoadingSpinner";
 import ErrorMessage from "../components/ErrorMessage";
 
 function Products() {
-  const { cName } = useParams();
+  // const { cName } = useParams();
+  const { search } = useLocation();
+  const cName = new URLSearchParams(search).get("name");
   const { products, fetchProducts, loading, error } =
     useContext(ProductDataContext);
   const [filteredProducts, setFilteredProducts] = useState([]);
