@@ -1,4 +1,3 @@
-import React, { useContext, useEffect } from "react";
 import Hero from "../components/Hero";
 import Slider from "../components/Slider";
 import ShopviaCategory from "../components/ShopviaCategory";

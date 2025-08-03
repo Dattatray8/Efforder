@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import GetProductsViaCategory from "../utils/GetProductsViaCategory";
 import ProductCard from "../components/ProductCard";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
 import { ProductDataContext } from "../context/ProductContext";
 import LoadingSpinner from "../components/LoadingSpinner";

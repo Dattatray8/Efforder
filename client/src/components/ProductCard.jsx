@@ -31,9 +31,11 @@ function ProductCard(item) {
         });
       }}
     >
-      <p className="absolute top-2 left-2 bg-[#ef4444] text-white font-semibold px-2 py-[0.1rem] rounded-full text-[0.8rem]">
-        {item.discount}% OFF
-      </p>
+      {item.discount && (
+        <p className="absolute top-2 left-2 bg-[#ef4444] text-white font-semibold px-2 py-[0.1rem] rounded-full text-[0.8rem]">
+          {item.discount}% OFF
+        </p>
+      )}
       <img
         src={item.image}
         alt="Product Image"
@@ -51,7 +53,9 @@ function ProductCard(item) {
         <p className="font-semibold text-lg">{item.name}</p>
         <div className="flex w-full gap-2 items-center">
           <p className="font-bold text-xl">₹{item.price}</p>
-          <strike className="text-gray-500">₹{item.oldPrice}</strike>
+          {item.oldPrice && (
+            <strike className="text-gray-500 text-lg">₹{item.oldPrice}</strike>
+          )}
         </div>
       </div>
     </div>

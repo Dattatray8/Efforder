@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import logo from "../assets/logo.webp";
 import { motion, AnimatePresence } from "framer-motion";
 import {

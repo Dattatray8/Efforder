@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext } from "react";
 import logo from "../assets/logo.webp";
 import { useNavigate } from "react-router-dom";
 import { userDataContext } from "../context/UserContext";
