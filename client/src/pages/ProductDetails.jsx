@@ -74,23 +74,6 @@ function ProductDetails() {
     }
   };
 
-  const updateCart = async (id, quantity) => {
-    try {
-      const res = await axios.post(
-        serverUrl + "/api/cart/updateCart",
-        { productId: id, quantity },
-        { withCredentials: true }
-      );
-      if (res.data.success) {
-        console.log(res.data.message);
-      } else {
-        console.error(res.data.message || "Failed to update cart");
-      }
-    } catch (err) {
-      console.error("Error updating cart:", err);
-    }
-  };
-
   if (productNotFound || !product) {
     return (
       <div className="mt-20 w-full overflow-hidden">
