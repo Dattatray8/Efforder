@@ -6,6 +6,8 @@ import { RefreshCcw, ShieldCheck, Truck } from "lucide-react";
 import { ProductDataContext } from "../context/ProductContext";
 import LoadingSpinner from "../components/LoadingSpinner";
 import ErrorMessage from "../components/ErrorMessage";
+import { authDataContext } from "../context/AuthContext";
+import axios from "axios";
 
 function ProductDetails() {
   const { pId } = useParams();
@@ -20,6 +22,7 @@ function ProductDetails() {
   const [product, setProduct] = useState(null);
   const [productNotFound, setProductNotFound] = useState(false);
   const [productCount, setProductCount] = useState(1);
+  const { serverUrl } = useContext(authDataContext);
 
   useEffect(() => {
     if (!loading && products.length > 0 && pId) {
@@ -53,6 +56,40 @@ function ProductDetails() {
       </div>
     );
   }
+
+  const addToCart = async (id) => {
+    try {
+      const res = await axios.post(
+        serverUrl + "/api/cart/addToCart",
+        { productId: id, productCount },
+        { withCredentials: true }
+      );
+      if (res.data.success) {
+        setCartItemsCount(cartItemsCount + 1);
+      } else {
+        console.error(res.data.message || "Failed to add to cart");
+      }
+    } catch (err) {
+      console.error("Error adding to cart:", err);
+    }
+  };
+
+  const updateCart = async (id, quantity) => {
+    try {
+      const res = await axios.post(
+        serverUrl + "/api/cart/updateCart",
+        { productId: id, quantity },
+        { withCredentials: true }
+      );
+      if (res.data.success) {
+        console.log(res.data.message);
+      } else {
+        console.error(res.data.message || "Failed to update cart");
+      }
+    } catch (err) {
+      console.error("Error updating cart:", err);
+    }
+  };
 
   if (productNotFound || !product) {
     return (
@@ -165,21 +202,27 @@ function ProductDetails() {
                 } rounded-md transition-colors`}
                 onClick={() => {
                   if (productCount > 1) {
-                    setProductCount((prev) => prev - 1);
+                    const newCount = productCount - 1;
+                    setProductCount(newCount);
+                    // updateCart(product._id, newCount);
                   }
                 }}
                 disabled={productCount <= 1}
               >
                 -
               </button>
+
               <p className="py-2 px-4 border-l border-r border-gray-300">
                 {productCount}
               </p>
+
               <button
                 className="cursor-pointer hover:bg-gray-100 py-2 px-4 rounded-md transition-colors"
                 onClick={() => {
                   if (productCount < product.stock) {
-                    setProductCount((prev) => prev + 1);
+                    const newCount = productCount + 1;
+                    setProductCount(newCount);
+                    // updateCart(product._id, newCount);
                   }
                 }}
                 disabled={productCount >= product.stock}
@@ -192,9 +235,7 @@ function ProductDetails() {
           <button
             className="flex justify-center mx-[5%] w-[90%] bg-black text-white font-medium py-3 hover:bg-[#000000dd] transition rounded-md cursor-pointer"
             disabled={product.stock === 0}
-            onClick={() =>
-              setCartItemsCount((cartItemsCount) => cartItemsCount + 1)
-            }
+            onClick={() => addToCart(product._id)}
           >
             {product.stock === 0 ? "Out of Stock" : "Add to cart"}
           </button>

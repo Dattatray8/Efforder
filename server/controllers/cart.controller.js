@@ -1,8 +1,9 @@
 import Users from "../models/user.model.js";
+import Products from "../models/product.model.js";
 
 export const addToCart = async (req, res) => {
   try {
-    let { productId } = req.body;
+    let { productId, productCount } = req.body;
     const userData = await Users.findById(req.userId);
     if (!userData) {
       return res
@@ -11,9 +12,9 @@ export const addToCart = async (req, res) => {
     }
     let cart = userData.cartData || {};
     if (cart[productId]) {
-      cart[productId] += 1;
+      cart[productId] += productCount;
     } else {
-      cart[productId] = 1;
+      cart[productId] = productCount;
     }
     await Users.findByIdAndUpdate(req.userId, { cartData: cart });
     return res
@@ -57,9 +58,25 @@ export const getCurrentUserCart = async (req, res) => {
         .json({ success: false, message: "User not found" });
     }
     let cart = user.cartData || {};
+    const productIds = Object.keys(cart);
+    if (productIds.length === 0) {
+      return res
+        .status(200)
+        .json({ success: true, message: "Cart is empty", cart: {} });
+    }
+    const products = await Products.find({ _id: { $in: productIds } }).lean();
+    if (!products || products.length === 0) {
+      return res
+        .status(404)
+        .json({ success: false, message: "No products found in cart" });
+    }
+    const cartItems = products.map((product) => ({
+      product,
+      quantity: cart[product._id.toString()] || 0,
+    }));
     return res
       .status(200)
-      .json({ success: true, message: "Cart Data: ", cart });
+      .json({ success: true, message: "Cart Data: ", cart: cartItems });
   } catch (error) {
     return res
       .status(500)

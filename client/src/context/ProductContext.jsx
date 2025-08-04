@@ -34,6 +34,30 @@ function ProductContext({ children }) {
     }
   };
 
+  const getCart = async () => {
+    try {
+      const res = await axios.post(
+        serverUrl + "/api/cart/getCart",
+        {},
+        {
+          withCredentials: true,
+        }
+      );
+      console.log(res)
+      if (res.data.success) {
+        setCartItemsCount(Object.keys(res.data.cart).length);
+      } else {
+        console.error(res.data.message || "Failed to fetch cart");
+      }
+    } catch (err) {
+      console.error("Error fetching cart:", err);
+    }
+  };
+
+  useEffect(() => {
+    getCart();
+  }, [serverUrl, cartItemsCount]);
+
   useEffect(() => {
     const fetchData = async () => {
       await fetchProducts();

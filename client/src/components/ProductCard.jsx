@@ -1,17 +1,15 @@
-import { ShoppingCart } from "lucide-react";
-import React, { useContext, useState } from "react";
+import { useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useNavigate } from "react-router-dom";
-import { ProductDataContext } from "../context/ProductContext";
 
 AOS.init();
 
 function ProductCard(item) {
   const [hover, setHover] = useState(false);
-  let { setCartItemsCount, cartItemsCount } = useContext(ProductDataContext);
   item = item.data;
   const navigation = useNavigate();
+
   return (
     <div
       className="bg-white relative sm:w-[20em] sm:h-[18em] w-[17rem] h-[14rem] flex-shrink-0 flex flex-col justify-center items-center transition cursor-pointer rounded-lg hover:shadow-xl my-2"
@@ -43,7 +41,7 @@ function ProductCard(item) {
         alt="Product Image"
         className="w-[50%] h-[50%] object-contain"
       />
-      {hover && (
+      {/* {hover && (
         <div className="absolute flex justify-center items-center bg-gradient-to-t from-black/70 to-transparent w-full h-12 top-30 py-6 transition ease-in-out">
           <div
             className="flex py-1 gap-2 justify-center items-center px-18 rounded-md bg-white hover:bg-[#ffffffbe]"
@@ -54,8 +52,8 @@ function ProductCard(item) {
             <ShoppingCart className="w-5" />
             <p className="font-semibold">Add to cart</p>
           </div>
-        </div>
-      )}
+        </div> */}
+      {/* )} */}
       <div className="w-full flex flex-col justify-around items-start px-8 h-1/3  border-t-1 border-[#d7d7d7]">
         <p className="font-semibold text-lg">{item.name}</p>
         <div className="flex w-full gap-2 items-center">
