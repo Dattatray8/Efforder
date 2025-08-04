@@ -6,6 +6,7 @@ import ProductDetails from "../pages/ProductDetails";
 import Search from "../pages/Search";
 import Signup from "../pages/Signup";
 import Signin from "../pages/Signin";
+import Cart from "../pages/Cart";
 
 function AppRoutes() {
   return (
@@ -20,6 +21,7 @@ function AppRoutes() {
         <Route path="/search" element={<Search />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/signin" element={<Signin />} />
+        <Route path="/cart" element={<Cart />} />
       </Route>
     </Routes>
   );

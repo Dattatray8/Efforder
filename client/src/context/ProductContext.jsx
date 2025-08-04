@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, use, useContext, useEffect, useState } from "react";
 import { authDataContext } from "./AuthContext";
 import axios from "axios";
 
@@ -10,6 +10,7 @@ function ProductContext({ children }) {
   const [error, setError] = useState(null);
   const { serverUrl } = useContext(authDataContext);
   let [cartItemsCount, setCartItemsCount] = useState(0);
+  const [cartData, setCartData] = useState([]);
 
   const fetchProducts = async () => {
     try {
@@ -36,6 +37,8 @@ function ProductContext({ children }) {
 
   const getCart = async () => {
     try {
+      setLoading(true);
+      setError(null);
       const res = await axios.post(
         serverUrl + "/api/cart/getCart",
         {},
@@ -43,14 +46,17 @@ function ProductContext({ children }) {
           withCredentials: true,
         }
       );
-      console.log(res)
+      setCartData(res.data.cart);
+      console.log(res);
       if (res.data.success) {
         setCartItemsCount(Object.keys(res.data.cart).length);
       } else {
-        console.error(res.data.message || "Failed to fetch cart");
+        setError(res.data.message || "Failed to fetch cart");
       }
     } catch (err) {
-      console.error("Error fetching cart:", err);
+      setError("Error fetching cart:", err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -72,6 +78,9 @@ function ProductContext({ children }) {
     fetchProducts,
     cartItemsCount,
     setCartItemsCount,
+    getCart,
+    cartData,
+    setCartData,
   };
 
   return (

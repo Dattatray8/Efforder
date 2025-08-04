@@ -28,7 +28,7 @@ function Navbar() {
   const [sideBarOpen, setSideBarOpen] = useState(false);
   const { userData, getCurrentUser, setUserData } = useContext(userDataContext);
   const [showProfile, setShowProfile] = useState(false);
-  const { cartItemsCount } = useContext(ProductDataContext);
+  const { cartItemsCount, setCartItemsCount } = useContext(ProductDataContext);
   useEffect(() => {
     getCurrentUser();
   }, []);
@@ -204,6 +204,7 @@ function Navbar() {
                                 { withCredentials: true }
                               );
                               setUserData(null);
+                              setCartItemsCount(0);
                             } catch (error) {
                               console.log(error);
                             }
@@ -228,7 +229,10 @@ function Navbar() {
                 <p className={navUiClasses[0].p}>Sign in</p>
               </div>
             )}
-            <div className={navUiClasses[0].div + " relative"}>
+            <div
+              className={navUiClasses[0].div + " relative"}
+              onClick={() => navigation("/cart")}
+            >
               <ShoppingCart className="text-[#394762] group-hover:text-blue-600 group" />
               <p className="absolute right-[-0.9em] top-[-0.7em] text-white text-[0.8em] bg-[#394762] group-hover:bg-blue-600 h-5 w-5 flex justify-center items-center rounded-full">
                 {cartItemsCount}
@@ -352,7 +356,13 @@ function Navbar() {
                   <p className={navUiClasses[0].p}>Sign in</p>
                 </div>
               )}
-              <div className={navUiClasses[0].div + " relative"}>
+              <div
+                className={navUiClasses[0].div + " relative"}
+                onClick={() => {
+                  navigation("/cart");
+                  setSideBarOpen(false);
+                }}
+              >
                 <ShoppingCart className="text-[#394762] group-hover:text-blue-600 group" />
                 <p className="absolute right-[-0.9em] top-[-0.7em] text-white text-[0.8em] bg-[#394762] group-hover:bg-blue-600 h-5 w-5 flex justify-center items-center rounded-full">
                   {cartItemsCount}

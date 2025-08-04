@@ -6,6 +6,7 @@ import { authDataContext } from "../context/AuthContext";
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../utils/Firebase.js";
 import UserContext, { userDataContext } from "../context/UserContext.jsx";
+import { ProductDataContext } from "../context/ProductContext.jsx";
 
 function Signup() {
   const navigation = useNavigate();
@@ -18,6 +19,7 @@ function Signup() {
   const [showPassword, setShowPassword] = useState(false);
   const { serverUrl } = useContext(authDataContext);
   const { getCurrentUser } = UserContext(userDataContext);
+  const { getCart } = useContext(ProductDataContext);
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -42,6 +44,7 @@ function Signup() {
           navigation("/");
           console.log(e);
           await getCurrentUser();
+          await getCart();
         });
       navigation("/");
     } catch (error) {
@@ -85,6 +88,7 @@ function Signup() {
           console.log(e);
           navigation("/");
           await getCurrentUser();
+          await getCart();
         })
         .catch((err) => {
           console.log(err);

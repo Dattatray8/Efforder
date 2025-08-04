@@ -41,19 +41,6 @@ function ProductCard(item) {
         alt="Product Image"
         className="w-[50%] h-[50%] object-contain"
       />
-      {/* {hover && (
-        <div className="absolute flex justify-center items-center bg-gradient-to-t from-black/70 to-transparent w-full h-12 top-30 py-6 transition ease-in-out">
-          <div
-            className="flex py-1 gap-2 justify-center items-center px-18 rounded-md bg-white hover:bg-[#ffffffbe]"
-            onClick={() => {
-              setCartItemsCount((cartItemsCount) => cartItemsCount + 1);
-            }}
-          >
-            <ShoppingCart className="w-5" />
-            <p className="font-semibold">Add to cart</p>
-          </div>
-        </div> */}
-      {/* )} */}
       <div className="w-full flex flex-col justify-around items-start px-8 h-1/3  border-t-1 border-[#d7d7d7]">
         <p className="font-semibold text-lg">{item.name}</p>
         <div className="flex w-full gap-2 items-center">

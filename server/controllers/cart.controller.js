@@ -37,7 +37,11 @@ export const updateCart = async (req, res) => {
         .json({ success: false, message: "User not found" });
     }
     let cart = userData.cartData || {};
-    cart[productId] = quantity;
+    if (quantity === 0) {
+      delete cart[productId];
+    } else {
+      cart[productId] = quantity;
+    }
     await Users.findByIdAndUpdate(req.userId, { cartData: cart });
     return res
       .status(200)
