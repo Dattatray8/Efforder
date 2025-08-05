@@ -4,7 +4,7 @@ import { ProductDataContext } from "../context/ProductContext";
 import axios from "axios";
 import LoadingSpinner from "../components/LoadingSpinner";
 import ErrorMessage from "../components/ErrorMessage";
-import { ShoppingBag, Trash2 } from "lucide-react";
+import { ArrowRight, ShoppingBag, Trash2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 function Cart() {
@@ -40,10 +40,16 @@ function Cart() {
   const handleRetry = () => {
     getCart();
   };
-
+  let Price;
+  if (cartData.length > 0) {
+    Price = cartData.reduce(
+      (acc, item) => acc + item.product.price * item.quantity,
+      0
+    );
+  }
   return (
-    <div className="mt-20 bg-[#e6f0fe]">
-      <div className="flex flex-col p-4 gap-3">
+    <div className="mt-20 bg-[#e6f0fe] flex lg:flex-row flex-col justify-center lg:items-center">
+      <div className="flex flex-col p-4 gap-3 lg:w-[70%]">
         <p className="text-3xl font-semibold pl-4">Shopping Cart</p>
         {loading ? (
           <LoadingSpinner />
@@ -108,7 +114,7 @@ function Cart() {
                     updateCart(item.product._id, 0);
                   }}
                 >
-                  <Trash2 className="text-red-500 cursor-pointer" />
+                  <Trash2 className="text-red-500 cursor-pointer hover:scale-105 transition-all" />
                   <p className="font-semibold pr-8">
                     ₹{item.product.price * item.quantity}
                   </p>
@@ -124,11 +130,40 @@ function Cart() {
         )}
         <div className="px-4 self-center">
           <button
-            className="bg-white items-start py-2 px-4 cursor-pointer border border-gray-300 rounded-md hover:bg-gray-100 font-semibold"
+            className="bg-black text-white items-start py-2 px-4 cursor-pointer border border-gray-300 rounded-md hover:bg-[#000000cc] font-semibold transition-all"
             onClick={() => navigation("/")}
           >
             {cartData.length > 0 ? "Continue Shopping" : "Start Shopping"}
           </button>
+        </div>
+      </div>
+      <div className="flex lg:mt-8 lg:mr-8 m-8 py-4 px-8 border border-gray-300 rounded-lg bg-gray-50 lg:w-[30%] h-fit flex-col gap-4">
+        <p className="text-2xl font-semibold">Order Summary</p>
+        <div className="flex justify-between">
+          <p className="text-gray-500">Subtotal</p>
+          <p>{cartData.length > 0 ? "₹" + Price : "-"}</p>
+        </div>
+        <div className="flex justify-between">
+          <p className="text-gray-500">Shipping</p>
+          <p>{cartData.length > 0 ? "₹" + (Price < 500 ? 50 : 0) : "-"}</p>
+        </div>
+        <div className="border-b border-gray-300"></div>
+        <div className="flex justify-between">
+          <p className="font-semibold text-lg">Total</p>
+          <p className="font-semibold text-lg">
+            {cartData.length > 0 ? "₹" + (Price + (Price < 500 ? 50 : 0)) : "-"}
+          </p>
+        </div>
+        <div
+          className="flex justify-center items-center gap-2 group bg-black text-white py-2 rounded-md cursor-pointer hover:bg-[#000000cc] transition-colors"
+          onClick={() => {
+            if (cartData.length > 0) {
+              navigation("/checkout");
+            }
+          }}
+        >
+          <button>Proceed to Checkout</button>
+          <ArrowRight className="w-[1.25rem] h-[1.25rem] group-hover:translate-x-1 transition-transform" />
         </div>
       </div>
     </div>

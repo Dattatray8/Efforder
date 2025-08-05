@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import hero from "../assets/hero.webp";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -48,7 +48,7 @@ function Hero() {
             data-aos-delay="1500"
           >
             Discover the latest electronics with exclusive deals and free
-            shipping on orders over ₹50.
+            shipping on orders over ₹500.
           </p>
 
           {/* Buttons */}
