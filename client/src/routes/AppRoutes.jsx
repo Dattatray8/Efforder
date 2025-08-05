@@ -8,6 +8,7 @@ import Signup from "../pages/Signup";
 import Signin from "../pages/Signin";
 import Cart from "../pages/Cart";
 import Checkout from "../pages/Checkout";
+import Orders from "../pages/Orders";
 
 function AppRoutes() {
   return (
@@ -24,6 +25,7 @@ function AppRoutes() {
         <Route path="/signin" element={<Signin />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/orders" element={<Orders />} />
       </Route>
     </Routes>
   );

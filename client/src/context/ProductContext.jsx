@@ -74,6 +74,7 @@ function ProductContext({ children }) {
   const value = {
     products,
     loading,
+    setLoading,
     error,
     fetchProducts,
     cartItemsCount,
