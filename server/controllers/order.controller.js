@@ -11,7 +11,7 @@ export const placeOrder = async (req, res) => {
       amount,
       address,
       paymentMethod: "COD",
-      payment: false,
+      payment: "Pending",
       date: Date.now(),
     };
     const newOrder = new Orders(orderData);
@@ -51,7 +51,7 @@ export const getUserOrders = async (req, res) => {
 
 export const getAllOrders = async (req, res) => {
   try {
-    const orders = await Orders.find({});
+    const orders = await Orders.find({}).sort({ createdAt: -1 });
     return res.status(200).json({
       success: true,
       message: "All orders fetched successfully",
@@ -69,7 +69,7 @@ export const getAllOrders = async (req, res) => {
 export const updateStatus = async (req, res) => {
   try {
     const { orderId, status } = req.body;
-    await Orders.findByIdAndUpdate(orderId, { status }).sort({ createdAt: -1 });
+    await Orders.findByIdAndUpdate(orderId, { status });
     return res
       .status(201)
       .json({ success: true, message: "Order status is Updated" });

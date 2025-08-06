@@ -15,15 +15,16 @@ import { useEffect } from "react";
 function Home() {
   const navigation = useNavigate();
   const { adminData } = useContext(userDataContext);
-  const { products, fetchProducts } = useContext(ProductDataContext);
+  const { products, fetchProducts, fetchOrders, orders } = useContext(ProductDataContext);
 
   useEffect(() => {
     fetchProducts();
+    fetchOrders();
   }, []);
 
   const analyticsData = {
     totalItems: products.length,
-    totalOrders: 0,
+    totalOrders: orders.length,
     pendingOrders: 0,
   };
 

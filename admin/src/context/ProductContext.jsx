@@ -34,25 +34,25 @@ function ProductContext({ children }) {
 
   const fetchOrders = async () => {
     try {
-      await axios.get(serverUrl + "/api/order/allOrders", {
-        withCredentials: true,
-      }).then((e)=>{
-        console.log(e.data.orders);
-      });
+      await axios
+        .get(serverUrl + "/api/order/allOrders", {
+          withCredentials: true,
+        })
+        .then((e) => {
+          setOrders(e.data.orders);
+        });
     } catch (error) {
       console.error("Error in order Fetching: ", error);
     }
   };
-
-  useEffect(()=>{
-    fetchOrders()
-  },[])
 
   let value = {
     products,
     loading,
     error,
     fetchProducts,
+    fetchOrders,
+    orders
   };
   return (
     <ProductDataContext.Provider value={value}>
