@@ -35,7 +35,7 @@ function Navbar() {
 
   const categories = [
     { name: "Laptops", icon: <Laptop /> },
-    { name: "Smartphones", icon: <Smartphone /> },
+    { name: "SmartPhones", icon: <Smartphone /> },
     { name: "Audio", icon: <Headphones /> },
     { name: "Cameras", icon: <Camera /> },
     { name: "Wearables", icon: <Watch /> },
@@ -159,7 +159,7 @@ function Navbar() {
                           className="flex items-center gap-2 p-2 hover:bg-gray-100 cursor-pointer"
                           onClick={() => {
                             setShopOpen(false);
-                            navigation(`/products/category/${item.name}`);
+                            navigation(`/category?name=${item.name}`);
                           }}
                         >
                           {item.icon}
@@ -326,7 +326,7 @@ function Navbar() {
                   <li
                     className="flex items-center gap-2 p-2 hover:bg-gray-100 cursor-pointer"
                     onClick={() => {
-                      navigation(`/products/category/${item.name}`);
+                      navigation(`/category?name=${item.name}`);
                       setSideBarOpen(false);
                     }}
                     key={i}
@@ -338,6 +338,15 @@ function Navbar() {
               </ul>
             </div>
             <div className="border-b-1 w-[85%] my-6 border-[#394762]"></div>
+            <div
+              className="cursor-pointer"
+              onClick={() => {
+                navigation("/orders");
+                setSideBarOpen(false);
+              }}
+            >
+              Orders
+            </div>
 
             <div className="mt-3 px-4 flex justify-between w-[90%]">
               {userData ? (

@@ -5,12 +5,15 @@ import App from "./App.jsx";
 import { BrowserRouter } from "react-router-dom";
 import AuthContext from "./context/AuthContext.jsx";
 import UserContext from "./context/UserContext.jsx";
+import ProductContext from "./context/ProductContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <AuthContext>
       <UserContext>
-        <App />
+        <ProductContext>
+          <App />
+        </ProductContext>
       </UserContext>
     </AuthContext>
   </BrowserRouter>

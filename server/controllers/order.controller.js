@@ -48,3 +48,36 @@ export const getUserOrders = async (req, res) => {
     });
   }
 };
+
+export const getAllOrders = async (req, res) => {
+  try {
+    const orders = await Orders.find({});
+    return res.status(200).json({
+      success: true,
+      message: "All orders fetched successfully",
+      orders,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Failed to fetch all orders",
+      error: error.message,
+    });
+  }
+};
+
+export const updateStatus = async (req, res) => {
+  try {
+    const { orderId, status } = req.body;
+    await Orders.findByIdAndUpdate(orderId, { status }).sort({ createdAt: -1 });
+    return res
+      .status(201)
+      .json({ success: true, message: "Order status is Updated" });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Failed to update order status",
+      error: error.message,
+    });
+  }
+};

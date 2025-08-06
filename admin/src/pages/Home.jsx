@@ -6,19 +6,25 @@ import {
   Package,
   ShoppingCart,
 } from "lucide-react";
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { userDataContext } from "../context/UserContext";
+import { ProductDataContext } from "../context/ProductContext";
+import { useEffect } from "react";
 
 function Home() {
   const navigation = useNavigate();
   const { adminData } = useContext(userDataContext);
+  const { products, fetchProducts } = useContext(ProductDataContext);
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
   const analyticsData = {
-    totalItems: 0,
+    totalItems: products.length,
     totalOrders: 0,
     pendingOrders: 0,
-    revenue: 0,
   };
 
   return (
@@ -75,7 +81,7 @@ function Home() {
               </div>
             </div>
 
-            <div className="bg-white rounded-lg shadow-md p-6 border-l-4 border-purple-500">
+            {/* <div className="bg-white rounded-lg shadow-md p-6 border-l-4 border-purple-500">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-gray-600">Revenue</p>
@@ -85,7 +91,7 @@ function Home() {
                 </div>
                 <TrendingUp className="w-8 h-8 text-purple-500" />
               </div>
-            </div>
+            </div> */}
           </div>
 
           <div className="mb-8">

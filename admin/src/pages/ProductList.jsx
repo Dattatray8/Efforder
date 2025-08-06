@@ -1,33 +1,15 @@
 import { Trash2, Edit, Package, AlertCircle } from "lucide-react";
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { authDataContext } from "../context/AuthContext";
 import { userDataContext } from "../context/UserContext";
 import axios from "axios";
+import { ProductDataContext } from "../context/ProductContext";
 
 function Productlist() {
   const { serverUrl } = useContext(authDataContext);
   const { adminData } = useContext(userDataContext);
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
- 
-  const fetchProducts = async () => {
-    try {
-      setLoading(true);
-      const res = await axios.get(serverUrl + "/api/products/getProducts");
-      console.log(res);
-      if (res.data.success) {
-        setProducts(res.data.products || []);
-      } else {
-        setError(res.data.message || "Failed to fetch products");
-      }
-    } catch (err) {
-      setError("Error connecting to server");
-      console.error("Fetch error:", err);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const { products, setProducts, loading, error, fetchProducts } =
+    useContext(ProductDataContext);
 
   const removeProduct = async (productId) => {
     if (!confirm("Are you sure you want to delete this product?")) return;
