@@ -1,9 +1,10 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
 import axios from "axios";
 import { authDataContext } from "../context/AuthContext";
 import { userDataContext } from "../context/UserContext";
+import { toast } from "react-toastify";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -33,6 +34,11 @@ function Login() {
         .then(async (e) => {
           navigation("/");
           getAdminData();
+          toast.success("Logined Successfully!", {
+            style: {
+              width: "90%",
+            },
+          });
           console.log(e);
         });
     } catch (error) {

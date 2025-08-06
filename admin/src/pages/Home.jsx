@@ -2,7 +2,6 @@ import {
   CircleCheckBig,
   CirclePlus,
   List,
-  TrendingUp,
   Package,
   ShoppingCart,
 } from "lucide-react";
