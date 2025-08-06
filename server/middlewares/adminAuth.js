@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken";
 
 export const adminAuth = (req, res, next) => {
   try {
-    let token = req.cookies.token;
+    let token = req.cookies.admin_token;
     if (!token) {
       return res.status(400).json({ message: "Admin not authenticated" });
     }

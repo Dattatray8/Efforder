@@ -39,7 +39,7 @@ function Checkout() {
 
   const handleSubmit = async () => {
     const emptyField = Object.entries(formData).find(
-      ([key, val]) => val === ""
+      ([, val]) => val === ""
     );
     if (emptyField) {
       alert(`Fill the ${emptyField[0]} field`);

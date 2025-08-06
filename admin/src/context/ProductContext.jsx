@@ -3,7 +3,6 @@ import { createContext } from "react";
 import axios from "axios";
 import { useContext } from "react";
 import { authDataContext } from "../context/AuthContext";
-import { useEffect } from "react";
 
 export const ProductDataContext = createContext();
 

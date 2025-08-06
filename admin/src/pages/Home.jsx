@@ -15,7 +15,8 @@ import { useEffect } from "react";
 function Home() {
   const navigation = useNavigate();
   const { adminData } = useContext(userDataContext);
-  const { products, fetchProducts, fetchOrders, orders } = useContext(ProductDataContext);
+  const { products, fetchProducts, fetchOrders, orders } =
+    useContext(ProductDataContext);
 
   useEffect(() => {
     fetchProducts();
@@ -39,8 +40,8 @@ function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            <div className="bg-white rounded-lg shadow-md p-6 border-l-4 border-blue-500">
+          <div className="flex w-full justify-center gap-6 flex-wrap mb-8">
+            <div className="bg-white rounded-lg shadow-md p-6 border-l-4 border-blue-500 w-[20rem]">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-gray-600">
@@ -54,7 +55,7 @@ function Home() {
               </div>
             </div>
 
-            <div className="bg-white rounded-lg shadow-md p-6 border-l-4 border-green-500">
+            <div className="bg-white rounded-lg shadow-md p-6 border-l-4 border-green-500 w-[20rem]">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-gray-600">
@@ -67,32 +68,6 @@ function Home() {
                 <ShoppingCart className="w-8 h-8 text-green-500" />
               </div>
             </div>
-
-            <div className="bg-white rounded-lg shadow-md p-6 border-l-4 border-yellow-500">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm font-medium text-gray-600">
-                    Pending Orders
-                  </p>
-                  <p className="text-2xl font-bold text-gray-900">
-                    {analyticsData.pendingOrders}
-                  </p>
-                </div>
-                <CircleCheckBig className="w-8 h-8 text-yellow-500" />
-              </div>
-            </div>
-
-            {/* <div className="bg-white rounded-lg shadow-md p-6 border-l-4 border-purple-500">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm font-medium text-gray-600">Revenue</p>
-                  <p className="text-2xl font-bold text-gray-900">
-                    ₹{analyticsData.revenue}
-                  </p>
-                </div>
-                <TrendingUp className="w-8 h-8 text-purple-500" />
-              </div>
-            </div> */}
           </div>
 
           <div className="mb-8">
@@ -153,7 +128,7 @@ function Home() {
             </div>
           </div>
 
-          <div className="bg-white rounded-lg shadow-md p-6">
+          {/* <div className="bg-white rounded-lg shadow-md p-6">
             <h2 className="text-xl font-semibold text-gray-900 mb-4">
               Recent Activity
             </h2>
@@ -163,7 +138,7 @@ function Home() {
                 receiving orders.
               </p>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     )

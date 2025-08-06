@@ -38,7 +38,7 @@ export const signUp = async (req, res) => {
     res.cookie("token", token, {
       httponly: true,
       secure: false,
-      samesite: "Strict",
+      samesite: "Lax",
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
     res.status(201).send("User created successfully");
@@ -77,7 +77,7 @@ export const login = async (req, res) => {
     res.cookie("token", token, {
       httponly: true,
       secure: false,
-      samesite: "Strict",
+      samesite: "Lax",
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
     res.status(200).send("login successfull");
@@ -89,6 +89,15 @@ export const login = async (req, res) => {
 export const logout = async (req, res) => {
   try {
     res.clearCookie("token");
+    return res.status(200).json({ message: "logout successfull" });
+  } catch (err) {
+    return res.status(500).json({ message: "Server side error" });
+  }
+};
+
+export const adminLogout = async (req, res) => {
+  try {
+    res.clearCookie("admin_token");
     return res.status(200).json({ message: "logout successfull" });
   } catch (err) {
     return res.status(500).json({ message: "Server side error" });
@@ -111,7 +120,7 @@ export const googleLogin = async (req, res) => {
     res.cookie("token", token, {
       httponly: true,
       secure: false,
-      samesite: "Strict",
+      samesite: "Lax",
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
     res.status(200).send("Google login successfull");
@@ -133,10 +142,10 @@ export const adminLogin = async (req, res) => {
       } catch (err) {
         return res.status(400).json({ message: "admin email not found" });
       }
-      res.cookie("token", token, {
+      res.cookie("admin_token", token, {
         httponly: true,
         secure: false,
-        samesite: "Strict",
+        samesite: "Lax",
         maxAge: 1 * 24 * 60 * 60 * 1000,
       });
       res.status(200).send("Admin login successfull");

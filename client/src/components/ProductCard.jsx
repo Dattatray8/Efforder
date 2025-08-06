@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 AOS.init();
 
 function ProductCard(item) {
-  const [hover, setHover] = useState(false);
   item = item.data;
   const navigation = useNavigate();
 
@@ -17,12 +16,6 @@ function ProductCard(item) {
       data-aos="fade-up"
       data-aos-duration="1500"
       data-aos-once="true"
-      onMouseEnter={() => {
-        setHover(true);
-      }}
-      onMouseLeave={() => {
-        setHover(false);
-      }}
       onClick={() => {
         navigation(`/category/${item.category}/product/${item.productId}`);
         window.scrollTo({

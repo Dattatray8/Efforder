@@ -59,12 +59,23 @@ function Orders() {
                   </div>
                 ))}
                 <p className="font-semibold text-gray-700">₹ {order.amount}</p>
-                <p className="font-semibold text-gray-700">Date: {new Date(order.date).toLocaleString()}</p>
-                <p className="font-semibold text-gray-700">Payment Method: {order.paymentMethod}</p>
+                <p className="font-semibold text-gray-700">
+                  Date: {new Date(order.date).toLocaleString()}
+                </p>
+                <p className="font-semibold text-gray-700">
+                  Payment Method: {order.paymentMethod}
+                </p>
               </div>
               <div className="flex flex-col justify-between gap-3">
-                <p className="text-green-400 font-semibold text-lg">{order.status}</p>
-                <button className="bg-black text-white hover:bg-[#000000cc] py-2 px-4 rounded-md">Track Order</button>
+                <p className="text-green-400 font-semibold text-lg">
+                  {order.status}
+                </p>
+                <button
+                  className="bg-black text-white hover:bg-[#000000cc] py-2 px-4 rounded-md cursor-pointer"
+                  onClick={() => fetchOrders()}
+                >
+                  Track Order
+                </button>
               </div>
             </div>
           ))

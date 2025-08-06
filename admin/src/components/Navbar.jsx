@@ -29,7 +29,7 @@ function Navbar() {
             onClick={async () => {
               try {
                 await axios.post(
-                  serverUrl + "/api/auth/logout",
+                  serverUrl + "/api/auth/adminlogout",
                   {},
                   {
                     withCredentials: true,

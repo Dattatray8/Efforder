@@ -1,51 +1,19 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { ProductDataContext } from "../context/ProductContext";
 import { authDataContext } from "../context/AuthContext";
+import axios from "axios";
+import { userDataContext } from "../context/UserContext";
 
 function Orders() {
-  const { fetchOrders, orders, updateOrderStatus, user } =
-    useContext(ProductDataContext);
-  const { adminData } = useContext(authDataContext);
-  const [isUpdatingStatus, setIsUpdatingStatus] = useState({});
+  const { fetchOrders, orders } = useContext(ProductDataContext);
+  const { serverUrl } = useContext(authDataContext);
+  const { adminData } = useContext(userDataContext);
 
   useEffect(() => {
     fetchOrders();
   }, []);
 
   console.log(orders);
-
-  const getStatusBadgeColor = (status) => {
-    switch (status?.toLowerCase()) {
-      case "delivered":
-        return "bg-green-100 text-green-800 border-green-200";
-      case "shipped":
-        return "bg-blue-100 text-blue-800 border-blue-200";
-      case "processing":
-        return "bg-yellow-100 text-yellow-800 border-yellow-200";
-      case "confirmed":
-        return "bg-purple-100 text-purple-800 border-purple-200";
-      case "pending":
-        return "bg-orange-100 text-orange-800 border-orange-200";
-      case "cancelled":
-        return "bg-red-100 text-red-800 border-red-200";
-      default:
-        return "bg-gray-100 text-gray-800 border-gray-200";
-    }
-  };
-
-  const getPaymentStatusColor = (status) => {
-    switch (status?.toLowerCase()) {
-      case "paid":
-      case "success":
-        return "text-green-600 bg-green-50 border-green-200";
-      case "pending":
-        return "text-yellow-600 bg-yellow-50 border-yellow-200";
-      case "failed":
-        return "text-red-600 bg-red-50 border-red-200";
-      default:
-        return "text-gray-600 bg-gray-50 border-gray-200";
-    }
-  };
 
   const formatDate = (dateString) => {
     if (!dateString) return "N/A";
@@ -59,28 +27,21 @@ function Orders() {
     });
   };
 
-  const handleStatusChange = async (orderId, newStatus) => {
-    setIsUpdatingStatus((prev) => ({ ...prev, [orderId]: true }));
+  const statusHandler = async (e, orderId) => {
     try {
-      if (updateOrderStatus) {
-        await updateOrderStatus(orderId, newStatus);
-        await fetchOrders();
-      }
+      await axios
+        .post(
+          serverUrl + "/api/order/updateStatus",
+          { orderId, status: e.target.value },
+          { withCredentials: true }
+        )
+        .then(async () => {
+          await fetchOrders();
+        });
     } catch (error) {
-      console.error("Error updating order status:", error);
-    } finally {
-      setIsUpdatingStatus((prev) => ({ ...prev, [orderId]: false }));
+      console.log(error);
     }
   };
-
-  const statusOptions = [
-    orders.status,
-    "confirmed",
-    "processing",
-    "shipped",
-    "delivered",
-    "cancelled",
-  ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#e6f0fe] to-[#f0f8ff] p-4 sm:p-6 lg:p-8">
@@ -109,9 +70,7 @@ function Orders() {
                           </h3>
                           <p className="text-sm text-gray-600">
                             <span className="font-medium">Order Date:</span>{" "}
-                            {formatDate(
-                              order.createdAt || order.date || order.orderDate
-                            )}
+                            {formatDate(order.date)}
                           </p>
                         </div>
                         <div className="mt-2 sm:mt-0">
@@ -137,9 +96,7 @@ function Orders() {
                           <p className="text-sm text-gray-600 flex items-center">
                             <span className="font-medium">Payment Status:</span>
                             <span
-                              className={`ml-2 inline-flex items-center px-2 py-1 rounded-full text-xs font-medium border ${getPaymentStatusColor(
-                                order.paymentStatus
-                              )}`}
+                              className={`ml-2 inline-flex items-center px-2 py-1 rounded-full text-xs font-medium border`}
                             >
                               {order.payment.toString()}
                             </span>
@@ -148,25 +105,22 @@ function Orders() {
                       </div>
                     </div>
 
-                    <div className="flex flex-col items-start lg:items-end">
+                    <div className="flex gap-4 items-center lg:items-end">
                       <label className="text-sm font-medium text-gray-700 mb-2">
                         Order Status:
                       </label>
                       <select
-                        value={order.status?.toLowerCase()}
-                        onChange={(e) =>
-                          handleStatusChange(order._id, e.target.value)
-                        }
-                        disabled={!!isUpdatingStatus[order._id]}
                         className="border rounded p-2 text-sm"
+                        value={order.status}
+                        onChange={(e) => statusHandler(e, order._id)}
                       >
-                        {/* {statusOptions.map((status) => (
-                          <option key={status} value={status}>
-                            {status.charAt(0).toUpperCase() + status.slice(1)}
-                          </option>
-                        ))} */}
-                        <option value={order.status?.toLowerCase()}>{order.status}</option>
-                        <option value=""></option>
+                        <option value={order.status}>{order.status}</option>
+                        <option value="Order Packing">Order Packing</option>
+                        <option value="Order Out for delivery">
+                          Order Out for delivery
+                        </option>
+                        <option value="Order Shipped">Order Shipped</option>
+                        <option value="Order Delivered">Order Delivered</option>
                       </select>
                     </div>
                   </div>
@@ -221,11 +175,6 @@ function Orders() {
                             <span className="inline-flex items-center justify-center w-10 h-10 bg-blue-100 text-blue-600 rounded-full text-sm font-semibold">
                               {item.quantity}
                             </span>
-                            {item.price && (
-                              <p className="text-sm text-gray-600 mt-1 font-medium">
-                                ₹{(item.price * item.quantity).toLocaleString()}
-                              </p>
-                            )}
                           </div>
                         </div>
                       ))}
