@@ -8,7 +8,6 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import ErrorMessage from "../components/ErrorMessage";
 
 function Products() {
-  // const { cName } = useParams();
   const { search } = useLocation();
   const cName = new URLSearchParams(search).get("name");
   const { products, fetchProducts, loading, error } =

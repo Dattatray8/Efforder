@@ -4,6 +4,7 @@ import { authDataContext } from "../context/AuthContext";
 import { userDataContext } from "../context/UserContext";
 import axios from "axios";
 import { ProductDataContext } from "../context/ProductContext";
+import { toast } from "react-toastify";
 
 function Productlist() {
   const { serverUrl } = useContext(authDataContext);
@@ -20,12 +21,12 @@ function Productlist() {
 
       if (response.status === 200) {
         setProducts(products.filter((product) => product._id !== productId));
-        alert("Product deleted successfully!");
+        toast.success("Product deleted successfully!");
       } else {
-        alert(response.data.message || "Failed to delete product");
+        toast.error(response.data.message || "Failed to delete product");
       }
     } catch (err) {
-      alert("Error deleting product");
+      toast.error("Error deleting product");
       console.error("Delete error:", err);
     }
   };

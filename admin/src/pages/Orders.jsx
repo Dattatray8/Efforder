@@ -13,8 +13,6 @@ function Orders() {
     fetchOrders();
   }, []);
 
-  console.log(orders);
-
   const formatDate = (dateString) => {
     if (!dateString) return "N/A";
     const date = new Date(dateString);

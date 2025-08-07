@@ -1,4 +1,3 @@
-import React from "react";
 import headphone from "../assets/slider/earbird.webp";
 import monitor from "../assets/slider/monitor.webp";
 import speaker from "../assets/slider/speaker.webp";

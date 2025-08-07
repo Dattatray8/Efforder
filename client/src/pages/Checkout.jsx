@@ -5,6 +5,7 @@ import { ProductDataContext } from "../context/ProductContext";
 import razorpay from "../assets/razorpay.png";
 import { authDataContext } from "../context/AuthContext";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 function Checkout() {
   const navigation = useNavigate();
@@ -38,15 +39,13 @@ function Checkout() {
   };
 
   const handleSubmit = async () => {
-    const emptyField = Object.entries(formData).find(
-      ([, val]) => val === ""
-    );
+    const emptyField = Object.entries(formData).find(([, val]) => val === "");
     if (emptyField) {
-      alert(`Fill the ${emptyField[0]} field`);
+      toast.error(`Fill the ${emptyField[0]} field`);
       return;
     }
     if (!method) {
-      alert("Select a payment method");
+      toast.error("Select a payment method");
       return;
     }
     let orderData = {
@@ -64,7 +63,7 @@ function Checkout() {
             })
             .then((e) => {
               console.log(e);
-              navigation('/orders')
+              navigation("/orders");
             });
         } catch (error) {
           console.log(error);

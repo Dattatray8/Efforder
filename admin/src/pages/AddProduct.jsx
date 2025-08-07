@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useContext } from "react";
 import { authDataContext } from "../context/AuthContext";
+import { toast } from "react-toastify";
 
 function AddProduct() {
   const { serverUrl } = useContext(authDataContext);
@@ -61,17 +62,17 @@ function AddProduct() {
           formData.features.length === 0 ||
           formData.features[0] === "")
       ) {
-        alert("Please fill in the product features.");
+        toast.error("Please fill in the product features.");
         return;
       }
 
       if (key === "image" && formData.image === null) {
-        alert("Please upload a product image.");
+        toast.error("Please upload a product image.");
         return;
       }
 
       if (!formData[key]) {
-        alert(`Please fill in the Product ${key} field.`);
+        toast.error(`Please fill in the Product ${key} field.`);
         return;
       }
     }
@@ -88,9 +89,9 @@ function AddProduct() {
         }
       );
       console.log(response);
-      alert("Product added successfully!");
+      toast.success("Product added successfully!");
     } catch (error) {
-      console.error("Error submitting form:", error);
+      toast.error("Error submitting form:", error);
     }
   };
 
@@ -300,7 +301,7 @@ function AddProduct() {
             <button
               type="submit"
               onClick={handleSubmit}
-              className="flex-1 bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors font-semibold text-lg shadow-md hover:shadow-lg"
+              className="flex-1 bg-blue-600 text-white py-3 cursor-pointer px-6 rounded-lg hover:bg-blue-700 transition-colors font-semibold text-lg shadow-md hover:shadow-lg"
             >
               Add Product
             </button>
@@ -321,7 +322,7 @@ function AddProduct() {
                 });
                 setImagePreview(null);
               }}
-              className="px-6 py-3 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors font-semibold shadow-md hover:shadow-lg"
+              className="px-6 py-3 cursor-pointer bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-colors font-semibold shadow-md hover:shadow-lg"
             >
               Reset
             </button>

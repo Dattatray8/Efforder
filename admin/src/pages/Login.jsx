@@ -34,11 +34,7 @@ function Login() {
         .then(async (e) => {
           navigation("/");
           getAdminData();
-          toast.success("Logined Successfully!", {
-            style: {
-              width: "90%",
-            },
-          });
+          toast.success("Logined Successfully!");
           console.log(e);
         });
     } catch (error) {

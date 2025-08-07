@@ -4,7 +4,7 @@
   .Toastify__toast {
     width: 80% !important;
     top: 5rem;
-    right: 10vw;
+    right: 1vw;
     font-size: 14px; 
   }
 }

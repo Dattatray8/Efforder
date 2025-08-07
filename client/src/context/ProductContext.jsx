@@ -18,7 +18,6 @@ function ProductContext({ children }) {
       setError(null);
 
       const res = await axios.get(serverUrl + "/api/products/getProducts");
-      console.log(res.data.products);
 
       if (res.data.success) {
         setProducts(res.data.products || []);
@@ -47,7 +46,7 @@ function ProductContext({ children }) {
         }
       );
       setCartData(res.data.cart);
-      console.log(res);
+      // console.log(res);
       if (res.data.success) {
         setCartItemsCount(Object.keys(res.data.cart).length);
       } else {
