@@ -96,8 +96,18 @@ function Navbar() {
                     }}
                     onChange={(e) => {
                       const value = e.target.value;
-                      setSearchValue(value);
-                      navigation(value && `/search?q=${value}`);
+                      if (value === "") {
+                        navigation("/");
+                      }
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") {
+                        e.preventDefault();
+                        const value = e.target.value;
+                        setSearchValue(value);
+
+                        navigation(value && `/search?q=${value}`);
+                      }
                     }}
                   />
                   <svg
@@ -189,7 +199,7 @@ function Navbar() {
                       className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-lg z-30"
                     >
                       <ul className="p-2 rounded-md">
-                        <div onClick={()=>navigation('/orders')}>
+                        <div onClick={() => navigation("/orders")}>
                           <li className="flex items-center px-4 py-2 hover:bg-gray-100 cursor-pointer">
                             Orders
                           </li>
@@ -283,16 +293,17 @@ function Navbar() {
                 }}
                 onChange={(e) => {
                   const value = e.target.value;
-                  setSearchValue(value);
-                  navigation(value && `/search?q=${value}`);
+                  if (value === "") {
+                    navigation("/");
+                  }
                 }}
                 onKeyDown={(e) => {
                   if (e.key === "Enter") {
+                    e.preventDefault();
                     const value = e.target.value;
-                    if (value) {
-                      navigation(`/search?q=${value}`);
-                    }
+                    setSearchValue(value);
                     setSideBarOpen(false);
+                    navigation(value && `/search?q=${value}`);
                   }
                 }}
               />
