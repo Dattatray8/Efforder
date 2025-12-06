@@ -5,11 +5,12 @@ import {
   removeProduct,
 } from "../controllers/product.controller.js";
 import upload from "../middlewares/multer.js";
+import { adminAuth } from "../middlewares/adminAuth.js";
 
 const productRoutes = express(Router());
 
 productRoutes.post("/addProduct", upload.single("image"), addProduct);
 productRoutes.get("/getProducts", getProducts);
-productRoutes.post("/removeProduct/:id", removeProduct);
+productRoutes.post("/removeProduct/:id", adminAuth, removeProduct);
 
 export default productRoutes;

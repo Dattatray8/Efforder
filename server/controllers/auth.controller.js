@@ -36,9 +36,9 @@ export const signUp = async (req, res) => {
       return res.status(400).json({ message: "user id not found" });
     }
     res.cookie("token", token, {
-      httponly: true,
-      secure: false,
-      samesite: "Lax",
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
     res.status(201).send("User created successfully");
@@ -75,9 +75,9 @@ export const login = async (req, res) => {
       return res.status(400).json({ message: "user id not found" });
     }
     res.cookie("token", token, {
-      httponly: true,
-      secure: false,
-      samesite: "Lax",
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
     res.status(200).send("login successfull");
@@ -88,7 +88,11 @@ export const login = async (req, res) => {
 
 export const logout = async (req, res) => {
   try {
-    res.clearCookie("token");
+    res.clearCookie("token", {
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
+    });
     return res.status(200).json({ message: "logout successfull" });
   } catch (err) {
     return res.status(500).json({ message: "Server side error" });
@@ -97,7 +101,11 @@ export const logout = async (req, res) => {
 
 export const adminLogout = async (req, res) => {
   try {
-    res.clearCookie("admin_token");
+    res.clearCookie("admin_token", {
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
+    });
     return res.status(200).json({ message: "logout successfull" });
   } catch (err) {
     return res.status(500).json({ message: "Server side error" });
@@ -118,9 +126,9 @@ export const googleLogin = async (req, res) => {
       return res.status(400).json({ message: "user id not found" });
     }
     res.cookie("token", token, {
-      httponly: true,
-      secure: false,
-      samesite: "Lax",
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
     res.status(200).send("Google login successfull");
@@ -143,9 +151,9 @@ export const adminLogin = async (req, res) => {
         return res.status(400).json({ message: "admin email not found" });
       }
       res.cookie("admin_token", token, {
-        httponly: true,
-        secure: false,
-        samesite: "Lax",
+        httpOnly: true,
+        secure: true,
+        sameSite: "none",
         maxAge: 1 * 24 * 60 * 60 * 1000,
       });
       res.status(200).send("Admin login successfull");
