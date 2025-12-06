@@ -5,6 +5,7 @@ import AddProduct from "../pages/AddProduct";
 import ProductList from "../pages/ProductList";
 import Orders from "../pages/Orders";
 import Login from "../pages/Login";
+import Analytics from "../pages/Analytics";
 
 function AppRoutes() {
   return (
@@ -15,6 +16,7 @@ function AppRoutes() {
         <Route path="/lists" element={<ProductList />} />
         <Route path="/orders" element={<Orders />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/analytics" element={<Analytics />} />
       </Route>
     </Routes>
   );

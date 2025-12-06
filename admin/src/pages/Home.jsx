@@ -4,6 +4,7 @@ import {
   List,
   Package,
   ShoppingCart,
+  LineChart
 } from "lucide-react";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
@@ -120,6 +121,25 @@ function Home() {
                     <h3 className="font-semibold text-gray-900">View Orders</h3>
                     <p className="text-sm text-gray-600">
                       Monitor and manage customer orders
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow cursor-pointer border hover:border-purple-500"
+                onClick={() => navigation("/analytics")}
+              >
+                <div className="flex items-center gap-4">
+                  <div className="bg-purple-100 p-3 rounded-full">
+                    <LineChart className="w-6 h-6 text-purple-600" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900">
+                      Dashboard Analytics
+                    </h3>
+                    <p className="text-sm text-gray-600">
+                      View your activity insights
                     </p>
                   </div>
                 </div>

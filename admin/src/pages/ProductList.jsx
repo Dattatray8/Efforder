@@ -166,12 +166,6 @@ function Productlist() {
                           <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                             <div className="flex items-center gap-2">
                               <button
-                                className="text-blue-600 hover:text-blue-900 transition-colors p-1 rounded-md hover:bg-blue-50"
-                                title="Edit Product"
-                              >
-                                <Edit className="w-4 h-4" />
-                              </button>
-                              <button
                                 onClick={() => removeProduct(product._id)}
                                 className="text-red-600 hover:text-red-900 transition-colors p-1 rounded-md hover:bg-red-50"
                                 title="Delete Product"
