@@ -6,11 +6,23 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import ErrorMessage from "../components/ErrorMessage";
 import { ArrowRight, ShoppingBag, Trash2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { userDataContext } from "../context/UserContext";
 
 function Cart() {
   const { serverUrl } = useContext(authDataContext);
+  const { userData } = useContext(userDataContext);
   const { getCart, cartData, loading, error } = useContext(ProductDataContext);
+
   const navigation = useNavigate();
+
+  // Fetch cart only if user is logged in
+  useEffect(() => {
+    if (userData?._id) {
+      getCart();
+    }
+  }, [userData]);
+
+  // Update cart quantity or remove
   const updateCart = async (id, quantity) => {
     try {
       const res = await axios.post(
@@ -19,7 +31,6 @@ function Cart() {
         { withCredentials: true }
       );
       if (res.data.success) {
-        console.log(res.data.message);
         await getCart();
       } else {
         console.error(res.data.message || "Failed to update cart");
@@ -28,34 +39,52 @@ function Cart() {
       console.error("Error updating cart:", err);
     }
   };
-  if (!loading) {
-    console.log(cartData);
-  }
-  useEffect(() => {
-    async function fetchCartData() {
-      await getCart();
-    }
-    fetchCartData();
-  }, []);
-  const handleRetry = () => {
-    getCart();
-  };
-  let Price;
-  if (cartData.length > 0) {
-    Price = cartData.reduce(
-      (acc, item) => acc + item.product.price * item.quantity,
-      0
+
+  // Calculate subtotal
+  const Price =
+    cartData.length > 0
+      ? cartData.reduce(
+          (acc, item) => acc + item.product.price * item.quantity,
+          0
+        )
+      : 0;
+
+  // --- UI RENDER CONDITIONS ---
+  // 1️⃣ User Not Logged In
+  if (!userData || !userData._id) {
+    return (
+      <div className="mt-24 flex flex-col p-8 justify-center items-center gap-4">
+        <ShoppingBag className="text-gray-400 w-20 h-20" />
+        <p className="font-semibold text-xl">Please login to view your cart</p>
+
+        <button
+          onClick={() => navigation("/signin")}
+          className="bg-black text-white py-2 px-6 rounded-md hover:bg-[#000000cc] transition-all font-semibold"
+        >
+          Go to Login
+        </button>
+      </div>
     );
   }
+
+  // 2️⃣ Loading Spinner
+  if (loading) {
+    return <LoadingSpinner />;
+  }
+
+  // 3️⃣ Error Message (only when user is logged in)
+  if (error) {
+    return <ErrorMessage message={error} onRetry={getCart} />;
+  }
+
   return (
     <div className="mt-20 bg-[#e6f0fe] flex lg:flex-row flex-col justify-center lg:items-center">
+      {/* CART SECTION */}
       <div className="flex flex-col p-4 gap-3 lg:w-[70%]">
         <p className="text-3xl font-semibold pl-4">Shopping Cart</p>
-        {loading ? (
-          <LoadingSpinner />
-        ) : error ? (
-          <ErrorMessage message={error} onRetry={handleRetry} />
-        ) : cartData.length > 0 ? (
+
+        {/* CART ITEMS */}
+        {cartData.length > 0 ? (
           <div className="flex flex-col gap-4 justify-center items-center p-4">
             {cartData.map((item, index) => (
               <div
@@ -68,22 +97,22 @@ function Cart() {
                     alt="product image"
                     className="w-40 h-40 object-cover"
                   />
-                  <div className="flex flex-col sm:justify-around gap-2 p-2">
+                  <div className="flex flex-col gap-2 p-2">
                     <p className="font-semibold text-xl">{item.product.name}</p>
                     <p className="text-gray-400">₹{item.product.price} each</p>
+
+                    {/* QUANTITY */}
                     <div className="flex border-gray-300 border rounded-md w-fit">
                       <button
                         className={`px-4 py-2 ${
                           item.quantity > 1
                             ? "hover:bg-gray-100 cursor-pointer"
                             : "cursor-not-allowed opacity-50"
-                        } rounded-md transition-colors`}
-                        onClick={() => {
-                          if (item.quantity > 1) {
-                            const newCount = item.quantity - 1;
-                            updateCart(item.product._id, newCount);
-                          }
-                        }}
+                        }`}
+                        onClick={() =>
+                          item.quantity > 1 &&
+                          updateCart(item.product._id, item.quantity - 1)
+                        }
                         disabled={item.quantity <= 1}
                       >
                         -
@@ -94,13 +123,11 @@ function Cart() {
                       </p>
 
                       <button
-                        className="cursor-pointer hover:bg-gray-100 py-2 px-4 rounded-md transition-colors"
-                        onClick={() => {
-                          if (item.quantity < item.product.stock) {
-                            const newCount = item.quantity + 1;
-                            updateCart(item.product._id, newCount);
-                          }
-                        }}
+                        className="cursor-pointer hover:bg-gray-100 py-2 px-4"
+                        onClick={() =>
+                          item.quantity < item.product.stock &&
+                          updateCart(item.product._id, item.quantity + 1)
+                        }
                         disabled={item.quantity >= item.product.stock}
                       >
                         +
@@ -108,13 +135,13 @@ function Cart() {
                     </div>
                   </div>
                 </div>
+
+                {/* REMOVE */}
                 <div
-                  className="flex flex-col justify-end gap-8 sm:gap-0 sm:justify-between py-4 items-center"
-                  onClick={() => {
-                    updateCart(item.product._id, 0);
-                  }}
+                  className="flex flex-col justify-between py-4 items-center cursor-pointer"
+                  onClick={() => updateCart(item.product._id, 0)}
                 >
-                  <Trash2 className="text-red-500 cursor-pointer hover:scale-105 transition-all" />
+                  <Trash2 className="text-red-500 hover:scale-105 transition-all" />
                   <p className="font-semibold pr-8">
                     ₹{item.product.price * item.quantity}
                   </p>
@@ -123,47 +150,55 @@ function Cart() {
             ))}
           </div>
         ) : (
+          // EMPTY CART
           <div className="flex flex-col items-center gap-4 mt-3">
             <ShoppingBag className="text-gray-400 w-22 h-22" />
             <p className="font-semibold">Your cart is empty</p>
           </div>
         )}
+
+        {/* SHOP BUTTON */}
         <div className="px-4 self-center">
           <button
-            className="bg-black text-white items-start py-2 px-4 cursor-pointer border border-gray-300 rounded-md hover:bg-[#000000cc] font-semibold transition-all"
+            className="bg-black text-white py-2 px-4 rounded-md hover:bg-[#000000cc] font-semibold"
             onClick={() => navigation("/")}
           >
             {cartData.length > 0 ? "Continue Shopping" : "Start Shopping"}
           </button>
         </div>
       </div>
+
+      {/* ORDER SUMMARY */}
       <div className="flex lg:mt-8 lg:mr-8 m-8 py-4 px-8 border border-gray-300 rounded-lg bg-gray-50 lg:w-[30%] h-fit flex-col gap-4">
         <p className="text-2xl font-semibold">Order Summary</p>
+
         <div className="flex justify-between">
           <p className="text-gray-500">Subtotal</p>
-          <p>{cartData.length > 0 ? "₹" + Price : "-"}</p>
+          <p>{Price > 0 ? "₹" + Price : "-"}</p>
         </div>
+
         <div className="flex justify-between">
           <p className="text-gray-500">Shipping</p>
-          <p>{cartData.length > 0 ? "₹" + (Price < 500 ? 50 : 0) : "-"}</p>
+          <p>{Price > 0 ? "₹" + (Price < 500 ? 50 : 0) : "-"}</p>
         </div>
+
         <div className="border-b border-gray-300"></div>
+
         <div className="flex justify-between">
           <p className="font-semibold text-lg">Total</p>
           <p className="font-semibold text-lg">
-            {cartData.length > 0 ? "₹" + (Price + (Price < 500 ? 50 : 0)) : "-"}
+            {Price > 0 ? "₹" + (Price + (Price < 500 ? 50 : 0)) : "-"}
           </p>
         </div>
+
         <div
-          className="flex justify-center items-center gap-2 group bg-black text-white py-2 rounded-md cursor-pointer hover:bg-[#000000cc] transition-colors"
+          className="flex justify-center items-center gap-2 bg-black text-white py-2 rounded-md hover:bg-[#000000cc] transition-colors cursor-pointer"
           onClick={() => {
-            if (cartData.length > 0) {
-              navigation("/checkout");
-            }
+            if (Price > 0) navigation("/checkout");
           }}
         >
           <button>Proceed to Checkout</button>
-          <ArrowRight className="w-[1.25rem] h-[1.25rem] group-hover:translate-x-1 transition-transform" />
+          <ArrowRight className="w-[1.25rem] h-[1.25rem]" />
         </div>
       </div>
     </div>

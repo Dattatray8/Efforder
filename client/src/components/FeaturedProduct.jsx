@@ -4,10 +4,10 @@ import ProductCard from "./ProductCard";
 import { ProductDataContext } from "../context/ProductContext";
 import LoadingSpinner from "./LoadingSpinner";
 import ErrorMessage from "./ErrorMessage";
+import { toast } from "react-toastify";
 
 function FeaturedProduct({ title }) {
-  const { products, loading, error, fetchProducts } =
-    useContext(ProductDataContext);
+  const { products, loading } = useContext(ProductDataContext);
   const [featuredProducts, setFeaturedProducts] = useState([]);
 
   useEffect(() => {
@@ -15,10 +15,6 @@ function FeaturedProduct({ title }) {
       setFeaturedProducts(GetRandomProducts(products, 4));
     }
   }, [products, loading]);
-
-  const handleRetry = () => {
-    fetchProducts();
-  };
 
   return (
     <div
@@ -35,46 +31,15 @@ function FeaturedProduct({ title }) {
           {title}
         </div>
 
-        {loading ? (
-          <LoadingSpinner />
-        ) : error ? (
-          <ErrorMessage message={error} onRetry={handleRetry} />
-        ) : featuredProducts.length > 0 ? (
+        {loading && <LoadingSpinner />}
+        {featuredProducts.length > 0 && !loading ? (
           <div className="flex justify-center items-center flex-wrap h-auto sm:gap-10 gap-5">
             {featuredProducts.map((item) => (
               <ProductCard data={item} key={item._id} />
             ))}
           </div>
         ) : (
-          <div className="text-center p-8">
-            <div className="text-gray-400 mb-4">
-              <svg
-                className="mx-auto h-16 w-16"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={1}
-                  d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2 2v-5m16 0h-2M4 13h2m13-8V4a1 1 0 00-1-1H7a1 1 0 00-1 1v1m0 0V4a2 2 0 012-2h10a2 2 0 012 2v1M9 7h6v6H9V7z"
-                />
-              </svg>
-            </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">
-              No Products Found
-            </h3>
-            <p className="text-gray-600 mb-4">
-              There are no products available at the moment.
-            </p>
-            <button
-              onClick={handleRetry}
-              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
-            >
-              Refresh
-            </button>
-          </div>
+          !loading && <ErrorMessage message={"No products available"} />
         )}
       </div>
     </div>

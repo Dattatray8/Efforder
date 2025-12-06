@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import GetProduct from "../utils/GetProduct";
 import FeaturedProduct from "../components/FeaturedProduct";
 import { RefreshCcw, ShieldCheck, Truck } from "lucide-react";
@@ -8,6 +8,8 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import ErrorMessage from "../components/ErrorMessage";
 import { authDataContext } from "../context/AuthContext";
 import axios from "axios";
+import { userDataContext } from "../context/UserContext";
+import { toast } from "react-toastify";
 
 function ProductDetails() {
   const { pId } = useParams();
@@ -23,6 +25,8 @@ function ProductDetails() {
   const [productNotFound, setProductNotFound] = useState(false);
   const [productCount, setProductCount] = useState(1);
   const { serverUrl } = useContext(authDataContext);
+  const { userData } = useContext(userDataContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!loading && products.length > 0 && pId) {
@@ -218,7 +222,38 @@ function ProductDetails() {
           <button
             className="flex justify-center mx-[5%] w-[90%] bg-black text-white font-medium py-3 hover:bg-[#000000dd] transition rounded-md cursor-pointer"
             disabled={product.stock === 0}
-            onClick={() => addToCart(product._id)}
+            onClick={() => {
+              if (userData && userData._id) {
+                addToCart(product._id);
+              } else {
+                toast.info(
+                  <div className="flex justify-between items-center w-full">
+                    <div>
+                      <p className="font-semibold text-lg">Oops!</p>
+                      <p className="text-sm text-gray-700">
+                        Login to continue.
+                      </p>
+                    </div>
+
+                    <button
+                      className="ml-4 bg-blue-600 text-white px-3 py-1 rounded-md hover:bg-blue-700 text-sm"
+                      onClick={() => navigate("/signin")}
+                    >
+                      Login
+                    </button>
+                  </div>,
+                  {
+                    position: "top-center",
+                    autoClose: 4000,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: true,
+                    draggable: true,
+                    closeButton: true,
+                  }
+                );
+              }
+            }}
           >
             {product.stock === 0 ? "Out of Stock" : "Add to cart"}
           </button>
