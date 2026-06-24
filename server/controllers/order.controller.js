@@ -11,7 +11,7 @@ export const placeOrder = async (req, res) => {
       amount,
       address,
       paymentMethod: "COD",
-      payment: "Pending",
+      payment: false,
       date: Date.now(),
     };
     const newOrder = new Orders(orderData);
